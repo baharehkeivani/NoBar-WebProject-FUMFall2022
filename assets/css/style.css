@@ -1906,7 +1906,7 @@ responsive
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  padding-top: 80px;
+  padding-top: 110px;
   position: relative;
   overflow: hidden;
 }
@@ -1943,7 +1943,7 @@ responsive
 
 /*
 -------------------------------------------------------------------------------
-                                USER Profile
+                                Profile
 -------------------------------------------------------------------------------
 */
 
@@ -1962,4 +1962,25 @@ responsive
   transition: all 0.3s ease 0s;
   position: relative;
   z-index: 999;
+}
+
+/*
+-------------------------------------------------------------------------------
+                                requests list
+-------------------------------------------------------------------------------
+*/
+ul#list{
+  list-style-type:none;
+  white-space:nowrap;
+  overflow-x:auto;
+  width: 80%;
+  margin: auto;
+}
+
+.reqItem{
+  display:inline !important;
+  width: 100px;
+  height: 50px;
+  border-color: #191a20;
+  background-color: blue;
 }

@@ -38,13 +38,12 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li class="scroll-to-section"><a href="#order" class="active">درخواست ها</a></li>
+              <li class="scroll-to-section"><a href="#reqList" class="active">درخواست ها</a></li>
               <li class="scroll-to-section"><a href="#contact">ارتباط با ما</a></li>
               <li class="scroll-to-section"><a href="index.html">خروج</a></li>
               <li class="scroll-to-section">
-                <div class="main-red-button-hover"><a href="./profile-user.html">پروفایل</a></div>
+                <div class="main-red-button-hover"><a href="./profile-driver.html">پروفایل</a></div>
               </li>
-
             </ul>
             <a class='menu-trigger'>
               <span>"Menu"</span>
@@ -58,11 +57,20 @@
   <!-- ***** Header Area End ***** -->
 
   <!-- ***** Requests List Start ***** -->
-  <div class="order-box" id="order">
-    <div class="container">
-      <!-- TODO -->
+  <div class="order-box" id="reqList">
+    <div class="row text-center">
+      <h1>لیست درخواست ها</h1>
+      <p class="mb-4">این درخواست ها هنوز توسط راننده ای قبول نشده اند.</p>
+    </div>
+    <div>
+      <ul id="list">
+        <!-- list items will be add by script fom backend -->
+      </ul>
     </div>
   </div>
+
+
+
   <!-- ***** Requests List End ***** -->
 
   <!-- ***** Contact Us Start ***** -->
@@ -182,81 +190,7 @@
   <script src="assets/js/animation.js"></script>
   <script src="assets/js/imagesloaded.js"></script>
   <script src="assets/js/custom.js"></script>
-
-  <!-- Menu -->
-  <script>
-    $(document).on("click", ".naccs .menu div", function () {
-      var numberIndex = $(this).index();
-
-      if (!$(this).is("active")) {
-        $(".naccs .menu div").removeClass("active");
-        $(".naccs ul li").removeClass("active");
-
-        $(this).addClass("active");
-        $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
-
-        var listItemHeight = $(".naccs ul")
-          .find("li:eq(" + numberIndex + ")")
-          .innerHeight();
-        $(".naccs ul").height(listItemHeight + "px");
-      }
-    });
-  </script>
-
-  <!-- order : checking validations-->
-  <script>
-    (function () {
-      'use strict'
-      window.addEventListener('load', function () {
-        $(document).ready(function () {
-          $("input:radio").change(function () {
-            console.log(this);
-            if (this.value == '1' && this.name == 'orderType') {
-              // Fetch all the forms we want to apply custom Bootstrap validation styles to
-              var forms = document.getElementsByClassName('needs-validation')
-              // Loop over them and prevent submission
-              Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                  if (form.checkValidity() === false) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                  }
-                  form.classList.add('was-validated')
-                }, false)
-              })
-            } else if (this.value == '0' && this.name == 'orderType') {
-              // Fetch all the forms we want to apply custom Bootstrap validation styles to
-              var forms = document.getElementsByClassName('needs-validation-delivery')
-              // Loop over them and prevent submission
-              Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                  if (form.checkValidity() === false) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                  }
-                  form.classList.add('was-validated')
-                }, false)
-              })
-            }
-          });
-        })
-      }, false)
-    }())
-  </script>
-
-  <!--show extra infos for order-->
-  <script>
-    $(document).ready(function () {
-      $("input:radio").change(function () {
-        console.log(this);
-        if (this.value == '1' && this.name == 'orderType') {
-          $('#moving-extraInfo').show();
-        } else if (this.value == '0' && this.name == 'orderType') {
-          $('#moving-extraInfo').hide();
-        }
-      });
-    });
-  </script>
+  <script src="assets/js/scripts.js"></script>
 </body>
 
 </html>

@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-  <head>
+
+<head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+  <link rel="apple-touch-icon" type="image/png"
+    href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="preconnect" href="https://fonts.gstatic.com"> 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
 
   <title>NoBar - Login</title>
 
@@ -17,53 +21,55 @@
   <link rel="stylesheet" href="assets/css/fontawesome.css">
   <link rel="stylesheet" href="assets/css/loginST.css">
 
-  <script>window.console = window.console || function(t) {};</script>
+  <script>window.console = window.console || function (t) { };</script>
 
   <script>
-  if (document.location.search.match(/type=embed/gi)) {
-    window.parent.postMessage("resize", "*");
-  }
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage("resize", "*");
+    }
   </script>
 </head>
 
 <body translate="no">
   <div class="form-structor">
-	<div class="signup slide-up">
-		<h2 class="form-title" id="signup">ثبت نام</h2>
-		<div class="form-holder">
-      <select class="input" name="usertype" id="usertype">
-        <option value="0">کاربر</option>
-        <option value="1">راننده</option>
-      </select>
-      <input type="text" class="input" placeholder="نام">
-			<input type="email" class="input" placeholder="ایمیل">
-			<input type="password" class="input" placeholder="گذرواژه">
-		</div>
-		<button class="submit-btn">ثبت نام</button>
-	</div>
-	<div class="login">
-		<div class="center">
-			<h2 class="form-title" id="login">ورود</h2>
-			<div class="form-holder">
+    <div class="signup slide-up">
+      <h2 class="form-title" id="signup">ثبت نام</h2>
+      <div class="form-holder">
         <select class="input" name="usertype" id="usertype">
           <option value="0">کاربر</option>
           <option value="1">راننده</option>
-          <option value="2">ادمین</option>
         </select>
-				<input type="email" class="input" placeholder="ایمیل">
-				<input type="password" class="input" placeholder="گذرواژه">
-			</div>
-			<button class="submit-btn">ورود</button>
-		</div>
-	</div>
-</div>
+        <input type="text" class="input" placeholder="نام">
+        <input type="email" class="input" placeholder="ایمیل">
+        <input type="password" class="input" placeholder="گذرواژه">
+      </div>
+      <button class="submit-btn">ثبت نام</button>
+    </div>
+    <div class="login">
+      <div class="center">
+        <h2 class="form-title" id="login">ورود</h2>
+        <div class="form-holder">
+          <select class="input" name="usertype" id="usertype">
+            <option value="0">کاربر</option>
+            <option value="1">راننده</option>
+            <option value="2">ادمین</option>
+          </select>
+          <input type="email" class="input" placeholder="ایمیل">
+          <input type="password" class="input" placeholder="گذرواژه">
+        </div>
+        <button class="submit-btn">ورود</button>
+      </div>
+    </div>
+  </div>
 
+  <!-- Scripts -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script id="rendered-js" src="assets/js/loginJS.js"></script>
+  <script
+    src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js">
+  </script>
   
-<!-- Scripts -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script id="rendered-js" src="assets/js/loginJS.js"></script>
-<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+</body>
 
- 
-</body></html>
+</html>

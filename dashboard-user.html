@@ -268,26 +268,7 @@
   <script src="assets/js/animation.js"></script>
   <script src="assets/js/imagesloaded.js"></script>
   <script src="assets/js/custom.js"></script>
-
-  <!-- Menu -->
-  <script>
-    $(document).on("click", ".naccs .menu div", function () {
-      var numberIndex = $(this).index();
-
-      if (!$(this).is("active")) {
-        $(".naccs .menu div").removeClass("active");
-        $(".naccs ul li").removeClass("active");
-
-        $(this).addClass("active");
-        $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
-
-        var listItemHeight = $(".naccs ul")
-          .find("li:eq(" + numberIndex + ")")
-          .innerHeight();
-        $(".naccs ul").height(listItemHeight + "px");
-      }
-    });
-  </script>
+  <script src="assets/js/scripts.js"></script>
 
   <!-- order : checking validations-->
   <script>
@@ -297,24 +278,13 @@
         $(document).ready(function () {
           $("input:radio").change(function () {
             console.log(this);
+            var forms;
             if (this.value == '1' && this.name == 'orderType') {
-              // Fetch all the forms we want to apply custom Bootstrap validation styles to
-              var forms = document.getElementsByClassName('needs-validation')
-              // Loop over them and prevent submission
-              Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                  if (form.checkValidity() === false) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                  }
-                  form.classList.add('was-validated')
-                }, false)
-              })
+              forms = document.getElementsByClassName('needs-validation')
             } else if (this.value == '0' && this.name == 'orderType') {
-              // Fetch all the forms we want to apply custom Bootstrap validation styles to
-              var forms = document.getElementsByClassName('needs-validation-delivery')
-              // Loop over them and prevent submission
-              Array.prototype.filter.call(forms, function (form) {
+              forms = document.getElementsByClassName('needs-validation-delivery')
+            }
+            Array.prototype.filter.call(forms, function (form) {
                 form.addEventListener('submit', function (event) {
                   if (form.checkValidity() === false) {
                     event.preventDefault()
@@ -323,13 +293,11 @@
                   form.classList.add('was-validated')
                 }, false)
               })
-            }
           });
         })
       }, false)
     }())
   </script>
-
   <!--show extra infos for order-->
   <script>
     $(document).ready(function () {
