@@ -264,3 +264,8 @@ Logn in
   visibility: visible;
   transition: all 0.3s ease;
 }
+
+.error {
+  color: red;
+  display: none;
+}

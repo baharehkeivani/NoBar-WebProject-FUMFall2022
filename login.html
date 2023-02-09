@@ -32,44 +32,49 @@
 
 <body translate="no">
   <div class="form-structor">
-    <div class="signup slide-up">
+    <form class="signup slide-up" id="signupForm">
       <h2 class="form-title" id="signup">ثبت نام</h2>
       <div class="form-holder">
-        <select class="input" name="usertype" id="usertype">
+        <select class="input" name="accountType" id="accountType">
           <option value="0">کاربر</option>
           <option value="1">راننده</option>
         </select>
-        <input type="text" class="input" placeholder="نام">
-        <input type="email" class="input" placeholder="ایمیل">
-        <input type="password" class="input" placeholder="گذرواژه">
+        <input type="text" class="input" name="name" placeholder="نام">
+        <input type="email" class="input" name="email" placeholder="ایمیل">
+        <input type="password" class="input" name="password" placeholder="گذرواژه">
       </div>
-      <button class="submit-btn">ثبت نام</button>
-    </div>
+      <p id="error1" class="error"></p>
+      <button type="submit" class="submit-btn">ثبت نام</button>
+    </form>
     <div class="login">
-      <div class="center">
+      <form class="center" id="loginForm">
         <h2 class="form-title" id="login">ورود</h2>
         <div class="form-holder">
-          <select class="input" name="usertype" id="usertype">
+          <select class="input" name="accountType" id="accountType">
             <option value="0">کاربر</option>
             <option value="1">راننده</option>
             <option value="2">ادمین</option>
           </select>
-          <input type="email" class="input" placeholder="ایمیل">
-          <input type="password" class="input" placeholder="گذرواژه">
+          <input type="email" class="input" name="email" placeholder="ایمیل">
+          <input type="password" class="input" name="password" placeholder="گذرواژه">
         </div>
-        <button class="submit-btn">ورود</button>
-      </div>
+        <p id="error2" class="error">hi</p>
+        <button type="submit" class="submit-btn">ورود</button>
+      </form>
     </div>
   </div>
+
 
   <!-- Scripts -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script id="rendered-js" src="assets/js/loginJS.js"></script>
   <script
-    src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js">
-  </script>
-  
+    src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
 </body>
 
 </html>
