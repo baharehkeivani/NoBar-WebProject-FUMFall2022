@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="نوبار اولین سامانه حمل و نقل بار">
+  <meta name="author" content="نوبار">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <title>NoBar - Dashboard</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animated.css">
+</head>
+
+<body>
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="dashboard-user.html" class="logo">
+              <img height="75px" src="assets/images/logo.png">
+            </a>
+            <!-- ***** Logo End ***** -->
+            <div class="main-red-button-hover nav-visible"><a href="./dashboard-driver.html">بازگشت</a></div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <!-- ***** Profile Start ***** -->
+  <div class="container-md" style="margin-top: 150px;">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 align-self-center">
+        <h2 class="mb-4">پروفایل</h2>
+        <form id="profile" class="needs-validation" novalidate="">
+          <!-- Driver's Info -->
+          <h4 class="mb-2">اطلاعات راننده</h4>
+          <div class="row">
+            <div class="mb-3">
+              <label for="name">نام</label>
+              <div class="input-group">
+                <input type="text" id="name" class="form-control needs-validation" name="name" placeholder="نام" required="">
+                <div class="invalid-feedback" style="width: 100%;"> این فیلد یک فیلد الزامی است. </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email">ایمیل</label>
+              <div class="input-group">
+                <input type="email" id="email" class="form-control needs-validation" name="email" placeholder="ایمیل"
+                  required="">
+                <div class="invalid-feedback" style="width: 100%;"> این فیلد یک فیلد الزامی است. </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="password">گذرواژه</label>
+              <div class="input-group">
+                <input type="text" id="password" class="form-control needs-validation" name="password" placeholder="گذرواژه"
+                  required="">
+                <div class="invalid-feedback" style="width: 100%;"> این فیلد یک فیلد الزامی است. </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-6">
+                <label for="verificationStatus">وضعیت احراز</label>
+              <div class="input-group">
+                <p id="verificationStatus" class="form-control" name="verificationStatus" >نامشخص</p>
+              </div>
+              </div>
+              <div class="col-6">
+                <label for="driverStatus">وضعیت راننده</label>
+              <div class="input-group">
+                <p id="driverStatus" class="form-control" name="driverStatus" >نامشخص</p>
+              </div>
+              </div>
+            </div>
+            <!-- Car's Info -->
+            <h4 class="mb-2">اطلاعات خودرو</h4>
+            <div class="row mb-3">
+              <div class="col-6">
+                <label for="plaqueCityNumber">شماره شهر صادره پلاک</label>
+              <div class="input-group">
+                <input type="number" id="plaqueCityNumber" class="form-control needs-validation" name="plaqueCityNumber" placeholder=""
+                  required="">
+                <div class="invalid-feedback" style="width: 100%;"> وارد کردن کد شهر صادره پلاک خودرو الزامی است. </div>
+              </div>
+              </div>
+              <div class="col-6">
+                <label for="plaque">پلاک</label>
+              <div class="input-group">
+                <input type="text" id="plaque" class="form-control needs-validation" name="plaque" placeholder="مثال : 12B342"
+                  required="" >
+                <div class="invalid-feedback" style="width: 100%;"> وارد کردن پلاک خودرو الزامی است. لطفا ارقام را به صورت کیبورد انگلیسی وارد کنید. </div>
+              </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="type">نوع ماشین</label>
+              <div class="input-group">
+                <input type="text" id="type" class="form-control needs-validation" name="type" placeholder="مثال : وانت نیسان"
+                  required="">
+                <div class="invalid-feedback" style="width: 100%;">لطفا نوع خودرو خودرو وارد کنید.</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="color">رنگ ماشین</label>
+              <div class="input-group">
+                <input type="text" id="color" class="form-control needs-validation" name="color" placeholder="مثال : قرمز"
+                  required="">
+                <div class="invalid-feedback" style="width: 100%;">لطفا رنگ خودرو خودرو وارد کنید.</div>
+              </div>
+            </div>
+            <hr>
+            <div class="row justify-content-center">
+              <button class="btn btn-primary btn-lg btn-block m-4" style="width: 100px;" type="submit">ثبت</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Profile Us End ***** -->
+
+  <!-- ***** Scripts ***** -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/animation.js"></script>
+
+  <!-- order : checking validations-->
+  <script>
+    (function () {
+      'use strict'
+      window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation')
+        // Loop over them and prevent submission
+        Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+          }, false)
+        })
+      }, false)
+    }())
+  </script>
+
+  <!-- load inputs from backend -->
+  <script>
+    window.onload = function () {
+      // variable must be given from backend //TODO
+      var name = "name";
+      var email = "steve@w3schools.com";
+      var pass = "pass1234";
+      var verificationStatus = "تایید نشده";
+      var driverStatus = "تایید شده";
+
+      var plaque = "12B345";
+      var plaqueCityNumber = 22 ;
+      var type = "کامیون";
+      var color = "آبی";
+
+      document.getElementById('name').value = name;
+      document.getElementById('email').value = email;
+      document.getElementById('password').value = pass;
+
+      verificationVar = document.getElementById('verificationStatus')
+      verificationVar.innerText = verificationStatus;
+      if(verificationStatus == "تایید شده"){
+        verificationVar.style.backgroundColor="rgb(169, 239, 152)";
+      }else{
+        verificationVar.style.backgroundColor="rgb(254, 174, 152)";
+      }
+
+      driverStatusVar = document.getElementById('driverStatus')
+      driverStatusVar.innerText = driverStatus;
+      if(driverStatus == "تایید شده"){
+        driverStatusVar.style.backgroundColor="rgb(169, 239, 152)";
+      }else{
+        driverStatusVar.style.backgroundColor="rgb(254, 174, 152)";
+      }
+
+      document.getElementById('plaque').value = plaque;
+      document.getElementById('plaqueCityNumber').value = plaqueCityNumber;
+      document.getElementById('type').value = type;
+      document.getElementById('color').value = color;
+    };
+  </script>
+</body>
+
+</html>

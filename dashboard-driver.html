@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="نوبار اولین سامانه حمل و نقل بار">
+  <meta name="author" content="نوبار">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <title>NoBar - Dashboard</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animated.css">
+</head>
+
+<body>
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="dashboard-user.html" class="logo">
+              <img height="75px" src="assets/images/logo.png">
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="#order" class="active">درخواست ها</a></li>
+              <li class="scroll-to-section"><a href="#contact">ارتباط با ما</a></li>
+              <li class="scroll-to-section"><a href="index.html">خروج</a></li>
+              <li class="scroll-to-section">
+                <div class="main-red-button-hover"><a href="./profile-user.html">پروفایل</a></div>
+              </li>
+
+            </ul>
+            <a class='menu-trigger'>
+              <span>"Menu"</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <!-- ***** Requests List Start ***** -->
+  <div class="order-box" id="order">
+    <div class="container">
+      <!-- TODO -->
+    </div>
+  </div>
+  <!-- ***** Requests List End ***** -->
+
+  <!-- ***** Contact Us Start ***** -->
+  <div id="contact" class="contact-us section">
+    <div class="container">
+      <h2 style="margin-bottom: 30px;">ارتباط با ما</h2>
+      <div class="row">
+        <div class="col-sm-12 align-self-center">
+          <form id="contact" action="" method="get">
+            <div class="row">
+              <div class="col-lg-12">
+                <fieldset>
+                  <input type="name" name="name" id="name" placeholder="نام" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <input type="surname" name="surname" id="surname" placeholder="نام خانوادگی" autocomplete="on"
+                    required>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="ایمیل" required="">
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <textarea id="website" name="website" rows="4" cols="50" placeholder="پیام خود را بنویسید."
+                    required></textarea>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="main-button">ارسال پیام</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="info">
+            <span><i class="fa fa-phone"></i> <a href="#">010-020-0340<br>090-080-0760</a></span>
+            <span><i class="fa fa-envelope"></i> <a href="#">info@company.com<br>mail@company.com</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-dec">
+      <img src="assets/images/contact-dec.png" alt="">
+    </div>
+  </div>
+  <!-- ***** Contacr Us End ***** -->
+
+  <!-- ***** Footer Start ***** -->
+  <div class="footer-dec">
+    <img src="assets/images/footer-dec.png" alt="">
+  </div>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="about footer-item">
+            <div class="logo">
+              <a href="#"><img src="assets/images/logo.png" alt="NoBar"></a>
+            </div>
+            <a href="#">info@company.com</a>
+            <ul>
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="services footer-item">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#">حمل بار بین شهری</a></li>
+              <li><a href="#">اسباب کشی</a></li>
+              <li><a href="#">بسته بندی بار</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="subscribe-newsletters footer-item">
+            <h4>خبرنامه نوبار را دنبال کنید</h4>
+            <p>تا در جریان جدید ترین اخبار ما باشید.</p>
+            <form action="#" method="get">
+              <button type="submit" id="form-submit" class="main-button"><i class="fa fa-paper-plane-o"></i></button>
+              <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="ایمیل خود را وارد کنید."
+                required="">
+            </form>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <div class="copyright">
+            <p>Copyright © 2023 NoBar Co., All Rights Reserved.
+              <br>
+              Zahra Ardaneh - Bahareh Keivani
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- ***** Footer End ***** -->
+
+
+  <!-- ***** Scripts ***** -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/imagesloaded.js"></script>
+  <script src="assets/js/custom.js"></script>
+
+  <!-- Menu -->
+  <script>
+    $(document).on("click", ".naccs .menu div", function () {
+      var numberIndex = $(this).index();
+
+      if (!$(this).is("active")) {
+        $(".naccs .menu div").removeClass("active");
+        $(".naccs ul li").removeClass("active");
+
+        $(this).addClass("active");
+        $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
+
+        var listItemHeight = $(".naccs ul")
+          .find("li:eq(" + numberIndex + ")")
+          .innerHeight();
+        $(".naccs ul").height(listItemHeight + "px");
+      }
+    });
+  </script>
+
+  <!-- order : checking validations-->
+  <script>
+    (function () {
+      'use strict'
+      window.addEventListener('load', function () {
+        $(document).ready(function () {
+          $("input:radio").change(function () {
+            console.log(this);
+            if (this.value == '1' && this.name == 'orderType') {
+              // Fetch all the forms we want to apply custom Bootstrap validation styles to
+              var forms = document.getElementsByClassName('needs-validation')
+              // Loop over them and prevent submission
+              Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                  if (form.checkValidity() === false) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                  }
+                  form.classList.add('was-validated')
+                }, false)
+              })
+            } else if (this.value == '0' && this.name == 'orderType') {
+              // Fetch all the forms we want to apply custom Bootstrap validation styles to
+              var forms = document.getElementsByClassName('needs-validation-delivery')
+              // Loop over them and prevent submission
+              Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                  if (form.checkValidity() === false) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                  }
+                  form.classList.add('was-validated')
+                }, false)
+              })
+            }
+          });
+        })
+      }, false)
+    }())
+  </script>
+
+  <!--show extra infos for order-->
+  <script>
+    $(document).ready(function () {
+      $("input:radio").change(function () {
+        console.log(this);
+        if (this.value == '1' && this.name == 'orderType') {
+          $('#moving-extraInfo').show();
+        } else if (this.value == '0' && this.name == 'orderType') {
+          $('#moving-extraInfo').hide();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
