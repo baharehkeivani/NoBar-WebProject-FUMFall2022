@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="نوبار اولین سامانه حمل و نقل بار">
+  <meta name="author" content="نوبار">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <title>NoBar - Dashboard</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="/assets/css/fontawesome.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/animated.css">
+  <link rel="stylesheet" href="/assets/css/owl.css">
+</head>
+
+<body>
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="dashboard-user.html" class="logo">
+              <img height="75px" src="/assets/images/logo.png">
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="#services" class="active">درخواست ها</a></li>
+              <li class="scroll-to-section"><a href="./home">خروج</a></li>
+              <li class="scroll-to-section">
+                <div class="main-red-button-hover"><a href="./driverProfile">پروفایل</a></div>
+              </li>
+            </ul>
+            <a class='menu-trigger'>
+              <span>"Menu"</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <!-- ***** Requests List Start ***** -->
+  <div id="services" class="our-services section">
+    <div class="services-right-dec">
+      <img src="/assets/images/services-right-dec.png" alt="">
+    </div>
+    <div class="container">
+      <div class="services-left-dec">
+        <img src="/assets/images/services-left-dec.png" alt="">
+      </div>
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="section-heading">
+            <h2>لیست درخواست ها</h2>
+            <span>پاسخ داده نشده</span>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="list">
+        <!-- it is handeled with back -->
+      </div>
+    </div>
+  </div>
+  <!-- ***** Requests List End ***** -->
+
+  <!-- ***** Footer Start ***** -->
+  <div class="footer-dec">
+    <img src="/assets/images/footer-dec.png" alt="">
+  </div>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="about footer-item">
+            <div class="logo">
+              <a href="#"><img src="/assets/images/logo.png" alt="NoBar"></a>
+            </div>
+            <a href="#">info@company.com</a>
+            <ul>
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="services footer-item">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#">حمل بار بین شهری</a></li>
+              <li><a href="#">اسباب کشی</a></li>
+              <li><a href="#">بسته بندی بار</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="subscribe-newsletters footer-item">
+            <h4>خبرنامه نوبار را دنبال کنید</h4>
+            <p>تا در جریان جدید ترین اخبار ما باشید.</p>
+            <form action="#" method="get">
+              <button type="submit" id="form-submit" class="main-button"><i class="fa fa-paper-plane-o"></i></button>
+              <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="ایمیل خود را وارد کنید."
+                required="">
+            </form>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <div class="copyright">
+            <p>Copyright © 2023 NoBar Co., All Rights Reserved.
+              <br>
+              Zahra Ardaneh - Bahareh Keivani
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- ***** Footer End ***** -->
+
+  <!-- Scripts -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/owl-carousel.js"></script>
+  <script src="/assets/js/animation.js"></script>
+  <script src="/assets/js/imagesloaded.js"></script>
+  <script src="/assets/js/custom.js"></script>
+  <script src="/assets/js/scripts.js"></script>
+
+  <!-- get req list from back -->
+  <!-- TODO -->
+  <script> //<hr class="m-1">
+    window.addEventListener('load', function () {
+      //get req list items from back
+      var list = document.getElementById('list')
+      //for each item we append it ti the list
+      var reqID = 120;
+      var originAdd = "مشهد کوثر ۶"
+      var destAdd = "مشهد کوثر 7"
+      var orderType = "اثاث کشی"
+
+      var inner =
+        '        <h5>' + 'کد درخواست :' + '</h5>' +
+        '        <p>' + reqID + '</p>' +
+        '        <hr class="m-1">' +
+        '<h5>' + 'آدرس مبدا :' + '</h5>' +
+        '        <p>' + originAdd + '</p>' +
+        '        <hr class="m-1">' +
+        '<h5>' + 'آدرس مقصد :' + '</h5>' +
+        '        <p>' + originAdd + '</p>' +
+        '        <hr class="m-1">' +
+        '<h5>' + 'نوع درخواست :' + '</h5>' +
+        '        <p>' + orderType + '</p>' +
+        '<button id="btn" class="btn btn-info btn-lg btn-block" style="width: 200px;">قبول درخواست</button>';
+
+      list.appendChild(
+        Object.assign(
+          document.createElement('div'),
+          {
+            classList: 'item item-width',
+            innerHTML: inner
+          }
+        )
+      )
+
+    });
+  </script>
+
+  <!-- on click on submit-->
+  <script>
+    $(document).on('click', '#btn', function (event) {
+      //send to backend using request id //TODO
+      var reqIDString = $(this).parent().children().get(1).innerText
+      var reqID = Number(reqIDString)
+      //if response == 200 then next 2 lines //TODO
+      $(this).parent().hide()
+      alert('درخواست مورد نظر توسط شما قبول شد.')
+    });
+  </script>
+</body>
+
+</html>

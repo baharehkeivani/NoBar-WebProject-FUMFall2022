@@ -48,6 +48,12 @@ router.get('/driverDashboard', function (req, res) {
     });
 });
 
+router.get('/adminDashboard', function (req, res) {
+  res.render('dashboard-admin.ejs', {
+    title: 'داشبورد'
+  });
+});
+
 // router.get('/pricing', function (req, res) {
 //   res.render('home/pages/pricing.hbs', {
 //     title: 'Home'
