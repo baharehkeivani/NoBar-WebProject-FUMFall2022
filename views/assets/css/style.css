@@ -19,6 +19,10 @@ figure, header, nav, section, article, aside, footer, figcaption {
   outline: 0;
 }
 
+.body {
+  direction: rtl !important;
+}
+
 /* clear fix */
 .grid:after {
   content: '';
