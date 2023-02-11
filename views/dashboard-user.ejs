@@ -68,54 +68,65 @@
             <div class="mb-3">
               <label for="origin">آدرس مبدا</label>
               <div class="input-group">
-                <input type="text" class="form-control needs-validation-delivery" name="origin" placeholder="" required="">
+                <input type="text" class="form-control needs-validation-delivery" name="origin" placeholder=""
+                  required="">
                 <div class="invalid-feedback" style="width: 100%;"> آدرس مبدا یک فیلد الزامی است. </div>
               </div>
             </div>
             <div class="mb-3">
               <label for="destination">آدرس مقصد</label>
               <div class="input-group">
-                <input type="text" class="form-control needs-validation-delivery" name="destination" placeholder="" required="">
+                <input type="text" class="form-control needs-validation-delivery" name="destination" placeholder=""
+                  required="">
                 <div class="invalid-feedback" style="width: 100%;"> آدرس مقصد یک فیلد الزامی است. </div>
               </div>
             </div>
             <div class="mb-3">
               <label for="workers">تعداد کارگران</label>
               <div class="input-group">
-                <input type="number" class="form-control needs-validation-delivery" name="numberOfWorker" placeholder="" required="">
+                <input type="number" min="0" class="form-control needs-validation-delivery" name="numberOfWorker" placeholder=""
+                  required="">
                 <div class="invalid-feedback" style="width: 100%;">لطفا تعداد کارگران را وارد کنید.</div>
               </div>
             </div>
             <div class="mb-3">
               <label for="datetime">تاریخ و زمان</label>
               <div class="input-group">
-                <input type="datetime-local" class="form-control needs-validation-delivery" name="datetime" placeholder="" required="">
+                <input type="datetime-local" class="form-control needs-validation-delivery" name="datetime"
+                  placeholder="" required="">
                 <div class="invalid-feedback" style="width: 100%;">لطفا تاریخ و زمان مورد نظر خود را انتخاب کنید.</div>
               </div>
             </div>
             <div class="row">
-            <div>
-              <input id="moving" name="orderType" type="radio" required="" value="1">
-              <label for="moving">اثاث‌کشی</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input id="delivery" name="orderType" type="radio" required="" value="0">
-              <label class="mb-4" for="delivery">جا به جایی بار</label>
-            </div>
+              <div class="col-6">
+                <div class="custom-control custom-radio">
+                  <input id="moving" name="orderType" type="radio" required="" value="1">
+                  <label for="moving">اثاث‌کشی</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="delivery" name="orderType" type="radio" required="" value="0">
+                  <label class="mb-4" for="delivery">جا به جایی بار</label>
+                </div>
+              </div>
+              <div class="col-6 ">
+                <h6>نوع ماشین</h6>
+                <!--handeled with js  -->
+                <div id="carTypeRadio"></div>
+              </div>
             </div>
           </div>
           <div class="col-6" style="display: none;" id="moving-extraInfo">
             <div class="mb-3">
               <label for="originFloorCount">تعداد طبقات مبدا</label>
               <div class="input-group">
-                <input type="number" class="form-control" id="originFloorCount" placeholder="" required="">
+                <input type="number" min="0" class="form-control" id="originFloorCount" placeholder="" required="">
                 <div class="invalid-feedback" style="width: 100%;">لطفا تعداد طبقات مبدا را وارد کنید.</div>
               </div>
             </div>
             <div class="mb-3">
               <label for="destinationFloorCount">تعداد طبقات مقصد</label>
               <div class="input-group">
-                <input type="number" class="form-control" id="destinationFloorCount" placeholder="" required="">
+                <input type="number" min="0" class="form-control" id="destinationFloorCount" placeholder="" required="">
                 <div class="invalid-feedback" style="width: 100%;">لطفا تعداد طبقات مقصد را وارد کنید.</div>
               </div>
             </div>
@@ -129,11 +140,6 @@
             <label for="dest_elev_yes">بله</label>
             <input type="radio" id="dest_elev_no" name="destinationElevatorExist" value="0">
             <label for="dest_elev_no">خیر</label>
-            <p>نوع ماشین</p>
-            <input type="radio" id="carTypeVanet" name="orderCarType" value="1">
-            <label for="carTypeVanet">وانت</label>
-            <input type="radio" id="carTypeNeisan" name="orderCarType" value="0">
-            <label class="mb-4" for="carTypeNeisan">نیسان</label>
           </div>
         </div>
         <div class="row justify-content-center">
@@ -266,14 +272,14 @@
 
   <!-- ***** Scripts ***** -->
   <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/owl-carousel.js"></script>
-    <script src="/assets/js/animation.js"></script>
-    <script src="/assets/js/imagesloaded.js"></script>
-    <script src="/assets/js/custom.js"></script>
-    <script src="/assets/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/owl-carousel.js"></script>
+  <script src="/assets/js/animation.js"></script>
+  <script src="/assets/js/imagesloaded.js"></script>
+  <script src="/assets/js/custom.js"></script>
+  <script src="/assets/js/scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   <!-- order : checking validations-->
   <script>
@@ -290,14 +296,14 @@
               forms = document.getElementsByClassName('needs-validation-delivery')
             }
             Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                  if (form.checkValidity() === false) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                  }
-                  form.classList.add('was-validated')
-                }, false)
-              })
+              form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault()
+                  event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+              }, false)
+            })
           });
         })
       }, false)
@@ -305,13 +311,23 @@
   </script>
   <!--show extra infos for order-->
   <script>
+
     $(document).ready(function () {
       $("input:radio").change(function () {
         console.log(this);
+
+        const list = document.getElementById("carTypeRadio");
+
         if (this.value == '1' && this.name == 'orderType') {
           $('#moving-extraInfo').show();
+          list.innerHTML = '<p>کامیون</p1>'
+
         } else if (this.value == '0' && this.name == 'orderType') {
           $('#moving-extraInfo').hide();
+          list.innerHTML = ('<input type="radio" class="mt-1" id="carTypeVanet" name="orderCarType" value="1">' +
+            '<label for="carTypeVanet">وانت &nbsp</label>' +
+            '<input type="radio" id="carTypeNeisan" name="orderCarType" value="0">' +
+            '<label class="mb-4" for="carTypeNeisan">نیسان</label>')
         }
       });
     });
