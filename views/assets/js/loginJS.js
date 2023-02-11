@@ -42,16 +42,24 @@ form.addEventListener('submit', async event => {
   for (const [key, value] of formData) {
     data[key] = value;
   }
-
+  axios.defaults.withCredentials = true;
   // console.log(data);
   axios.post(`${baseRoute}/register`, data).then((response) => {
-    console.log("res ",response);
+    // console.log("res ",response);
     let temp = document.getElementById('error1');
     if(!response.data.success) {
       temp.style.display = "block";
       temp.textContent = response.data.message;
     } else {
       temp.style.display = "none";
+      if(data.accountType == 0) {
+        window.history.pushState("", "", "/userDashboard");
+      } else if(data.accountType == 1) {
+        window.history.pushState("", "", "/driverDashboard");
+      } else if(data.accountType == 2) {
+        window.history.pushState("", "", "/adminDashboard");
+      }
+      location.reload()
     }
   })
   .catch((error) => console.log(error));
@@ -67,17 +75,26 @@ loginForm.addEventListener('submit', async event => {
   for (const [key, value] of formData) {
     data[key] = value;
   }
+  axios.defaults.withCredentials = true;
 
   console.log(data);
   axios.post(`${baseRoute}/login`, data).then((response) => {
     //based on responses success an error must be shown or the page must be redirected to dashbord
-    console.log("res ",response);
+    // console.log("res ",response);
     let temp = document.getElementById('error1');
     if(!response.data.success) {
       temp.style.display = "block";
       temp.textContent = response.data.message;
     } else {
       temp.style.display = "none";
+      if(data.accountType == 0) {
+        window.history.pushState("", "", "/userDashboard");
+      } else if(data.accountType == 1) {
+        window.history.pushState("", "", "/driverDashboard");
+      } else if(data.accountType == 2) {
+        window.history.pushState("", "", "/adminDashboard");
+      }
+      location.reload()
     }
   })
   .catch((error) => console.log(error));
