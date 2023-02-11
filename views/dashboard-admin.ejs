@@ -80,6 +80,54 @@
   </div>
   <!-- ***** Unapproved Requests List End ***** -->
 
+  <!-- ***** Unapproved users List Start ***** -->
+  <div id="services" class="our-services section">
+    <div class="services-right-dec">
+      <img src="/assets/images/services-right-dec.png" alt="">
+    </div>
+    <div class="container">
+      <div class="services-left-dec">
+        <img src="/assets/images/services-left-dec.png" alt="">
+      </div>
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="section-heading">
+            <h2>کاربران جدید</h2>
+            <span>تایید نشده</span>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="usersList">
+        <!-- it is handeled with back -->
+      </div>
+    </div>
+  </div>
+  <!-- ***** Unapproved users List End ***** -->
+
+  <!-- ***** Unapproved Requests List Start ***** -->
+  <div id="services" class="our-services section">
+    <div class="services-right-dec">
+      <img src="/assets/images/services-right-dec.png" alt="">
+    </div>
+    <div class="container">
+      <div class="services-left-dec">
+        <img src="/assets/images/services-left-dec.png" alt="">
+      </div>
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="section-heading">
+            <h2>لیست رانندگان</h2>
+            <span>تایید نشده</span>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="driversList">
+        <!-- it is handeled with back -->
+      </div>
+    </div>
+  </div>
+  <!-- ***** Unapproved drivers List End ***** -->
+
   <!-- ***** Footer Start ***** -->
   <div class="footer-dec">
     <img src="/assets/images/footer-dec.png" alt="">
@@ -144,6 +192,99 @@
   <script src="/assets/js/imagesloaded.js"></script>
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/scripts.js"></script>
+
+
+  <!-- get unapproved req list from back -->
+  <!-- TODO -->
+  <script>
+    window.addEventListener('load', function () {
+      //get req list items from back
+      var list = document.getElementById('driversList')
+      //for each item we append it ti the list
+      var name = "بهاره ";
+      var email = "baharehkei1380@gmail.com"
+      var dateTime = "2023-11-01 23:00:02"
+      var plaque = "12B345-22"
+      var carColor = "آبی"
+      var orderCarType = 1;
+
+
+      var inner =
+        '<div class="row">' + 
+        '<div class="col-6">' + 
+        '        <h4>' + 'اطلاعات راننده :' + '</h4>' +
+        '        <br>' +
+        '        <h5>' + 'نام :' + '</h5>' +
+        '        <p>' + name + '</p>' +
+        '        <hr class="m-1">' +
+        '<h5>' + 'تاریخ و زمان پیوستن:' + '</h5>' +
+        '        <p>' + dateTime + '</p>' +
+        '        <hr class="m-1">' +
+        '<h5>' + 'ایمیل :' + '</h5>' +
+        '        <p>' + email + '</p>' +
+        '</div>' +
+        '<div class="col-6">' + 
+          '        <h4>' + 'اطلاعات خودرو :' + '</h4>' +
+        '        <br>' +
+        '<h5>' + 'پلاک ماشین:' + '</h5>' +
+        '        <p>' + plaque + '</p>' +
+        '        <hr class="m-1">' +
+        '<h5>' + 'رنگ خودرو  :' + '</h5>' +
+        '        <p>' +  carColor + '</p>' +
+        '        <hr class="m-1">' +
+        '<h5>' + 'نوع خودرو :' + '</h5>' +
+        '        <p>' + (orderCarType == 0 ? "نیسان" : (orderCarType == 1 ? "وانت" : "کامیون") )+ '</p>' +
+        '</div>' +
+
+        '</div>' +
+        '<button id="btn" class="btn btn-primary btn-lg btn-block" style="width: 200px;">تایید راننده</button>';
+
+      list.appendChild(
+        Object.assign(
+          document.createElement('div'),
+          {
+            classList: 'item ',
+            innerHTML: inner
+          }
+        )
+      )
+
+    });
+  </script>
+
+  <!-- get unapproved users list from back -->
+  <!-- TODO -->
+  <script>
+    window.addEventListener('load', function () {
+      //get req list items from back
+      var list = document.getElementById('usersList')
+      //for each item we append it ti the list
+      var name = "بهاره ";
+      var email = "baharehkei1380@gmail.com"
+      var dateTime = "2023-11-01 23:00:02"
+
+      var inner =
+        '<h5>' + 'نام :' + '</h5>' +
+        '        <p>' + name + '</p>' +
+        '        <hr class="m-1">' +
+        '<h5>' + 'تاریخ و زمان پیوستن:' + '</h5>' +
+        '        <p>' + dateTime + '</p>' +
+        '        <hr class="m-1">' +
+        '<h5>' + 'ایمیل :' + '</h5>' +
+        '        <p>' + email + '</p>' +
+        '<button id="btn" class="btn btn-primary btn-lg btn-block mt-4" style="width: 200px;">احراز کاربر</button>';
+
+      list.appendChild(
+        Object.assign(
+          document.createElement('div'),
+          {
+            classList: 'item item-width',
+            innerHTML: inner
+          }
+        )
+      )
+    });
+  </script>
 
   <!-- get unapproved req list from back -->
   <!-- TODO -->
@@ -228,7 +369,7 @@
       var reqID = Number(reqIDString)
       //if response == 200 then next 2 lines //TODO
       $(this).parent().hide()
-      alert('درخواست مورد نظر تایید شد.')
+      alert('درخواست مورد نظر انجام شد.')
     });
   </script>
 </body>
