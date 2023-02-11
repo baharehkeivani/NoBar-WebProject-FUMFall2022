@@ -40,7 +40,8 @@
             <ul class="nav">
               <li class="scroll-to-section"><a href="#order" class="active">سفارش</a></li>
               <li class="scroll-to-section"><a href="#contact">ارتباط با ما</a></li>
-              <li class="scroll-to-section"><a href="./home">خروج</a></li>
+              <!-- <li class="scroll-to-section"><a href="./home">خروج</a></li> -->
+              <li class="scroll-to-section"><button type="button" id="logout">خروج</button></li>
               <li class="scroll-to-section">
                 <div class="main-red-button-hover"><a href="./userProfile">پروفایل</a></div>
               </li>
@@ -61,7 +62,7 @@
   <div class="order-box" id="order">
     <div class="container">
       <h2 class="py-5 text-center">ثبت سفارش</h2>
-      <form class="needs-validation" novalidate="">
+      <form class="needs-validation" novalidate="" id="orderForm">
         <div class="row">
           <div class="col-6">
             <div class="mb-3">
@@ -138,6 +139,7 @@
         <div class="row justify-content-center">
           <hr class="mb-4">
           <p class="mb-4">* ثبت سفارش به معنای قبول کردن قوانین و ضوابط نوبار می باشد.</p>
+          <p id="error3" class="success"></p>
           <button class="btn btn-primary btn-lg btn-block" style="width: 100px;" type="submit">ثبت</button>
         </div>
       </form>
@@ -270,6 +272,8 @@
     <script src="/assets/js/imagesloaded.js"></script>
     <script src="/assets/js/custom.js"></script>
     <script src="/assets/js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   <!-- order : checking validations-->
   <script>

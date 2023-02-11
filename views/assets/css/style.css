@@ -1946,3 +1946,8 @@ responsive
                                 requests list
 -------------------------------------------------------------------------------
 */
+
+.success {
+  color: green;
+  display: none;
+}
