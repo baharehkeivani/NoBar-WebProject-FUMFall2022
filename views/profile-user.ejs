@@ -53,7 +53,8 @@
             <div class="mb-3">
               <label for="name">نام</label>
               <div class="input-group">
-                <input type="text" id="name" class="form-control needs-validation" name="name" placeholder="نام" required="">
+                <input type="text" id="name" class="form-control needs-validation" name="name" placeholder="نام"
+                  required="">
                 <div class="invalid-feedback" style="width: 100%;"> این فیلد یک فیلد الزامی است. </div>
               </div>
             </div>
@@ -68,12 +69,13 @@
             <div class="mb-3">
               <label for="password">گذرواژه</label>
               <div class="input-group">
-                <input type="text" id="password" class="form-control needs-validation" name="password" placeholder="گذرواژه"
-                  required="">
+                <input type="text" id="password" class="form-control needs-validation" name="password"
+                  placeholder="گذرواژه" required="">
                 <div class="invalid-feedback" style="width: 100%;"> این فیلد یک فیلد الزامی است. </div>
               </div>
             </div>
             <hr>
+            <p id="error4" class="success"></p>
             <div class="row justify-content-center">
               <button class="btn btn-primary btn-lg btn-block m-4" style="width: 100px;" type="submit">ثبت</button>
             </div>
@@ -87,6 +89,8 @@
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="/assets/js/animation.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   <!-- order : checking validations-->
   <script>
@@ -111,16 +115,57 @@
 
   <!-- load inputs from backend -->
   <script>
+    const baseRoute = "http://127.0.0.1:4000/v1";
     window.onload = function () {
-      // variable must be given from backend //TODO
-      var name = "name";
-      var email = "steve@w3schools.com";
-      var pass = "pass1234";
-      document.getElementById('name').value = name;
-      document.getElementById('email').value = email;
-      document.getElementById('password').value = pass;
+      
+      axios.defaults.withCredentials = true;
+      axios.get(`${baseRoute}/getUserProfile`).then((response) => {
+        // console.log(resp);
+        document.getElementById('name').value = response.data.data.name;
+        document.getElementById('email').value = response.data.data.email;
+        // document.getElementById('password').value = response.data.datapass;
+      })
+        .catch((error) => console.log(error));
     };
+
+
+    const profile = document.getElementById('profile');
+    // console.log(orderForm);
+    profile.addEventListener('submit', async event => {
+      event.preventDefault();
+
+      const formData = new FormData(profile);
+      data = {};
+      for (const [key, value] of formData) {
+        // console.log(key,value);
+        // if(key=="orderType" && value==null) {
+        //     data[key] = 0;
+        // }
+        // else 
+        data[key] = value;
+      }
+      axios.defaults.withCredentials = true;
+      // if(data.orderType == undefined) 
+      //   console.log(data.orderType);
+      axios.post(`${baseRoute}/updateUser`, data).then((response) => {
+        //based on responses success an error must be shown or the page must be redirected to dashbord
+        // console.log("res ",response);
+        
+        let temp = document.getElementById('error4');
+        if (!response.data.success) {
+          temp.style.display = "block";
+          temp.textContent = response.data.message;
+        } else {
+          temp.style.display = "block";
+          temp.textContent = response.data.message;
+            location.reload()
+        }
+      })
+        .catch((error) => console.log(error));
+    });
   </script>
+
+
 </body>
 
 </html>
