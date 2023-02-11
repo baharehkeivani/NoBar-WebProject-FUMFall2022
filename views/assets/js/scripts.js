@@ -15,6 +15,7 @@ $(document).on("click", ".naccs .menu div", function () {
             .find("li:eq(" + numberIndex + ")")
             .innerHeight();
         $(".naccs ul").height(listItemHeight + "px");
+        
     }
 });
 

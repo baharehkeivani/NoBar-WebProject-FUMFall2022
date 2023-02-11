@@ -68,7 +68,7 @@
             <div class="mb-3">
               <label for="origin">آدرس مبدا</label>
               <div class="input-group">
-                <input type="text" class="form-control needs-validation-delivery" name="origin" placeholder=""
+                <input type="text" class="form-control needs-validation-delivery clearForm" name="origin" placeholder=""
                   required="">
                 <div class="invalid-feedback" style="width: 100%;"> آدرس مبدا یک فیلد الزامی است. </div>
               </div>
@@ -76,23 +76,23 @@
             <div class="mb-3">
               <label for="destination">آدرس مقصد</label>
               <div class="input-group">
-                <input type="text" class="form-control needs-validation-delivery" name="destination" placeholder=""
-                  required="">
+                <input type="text" class="form-control needs-validation-delivery clearForm" name="destination"
+                  placeholder="" required="">
                 <div class="invalid-feedback" style="width: 100%;"> آدرس مقصد یک فیلد الزامی است. </div>
               </div>
             </div>
             <div class="mb-3">
               <label for="workers">تعداد کارگران</label>
               <div class="input-group">
-                <input type="number" min="0" class="form-control needs-validation-delivery" name="numberOfWorker"
-                  placeholder="" required="">
+                <input type="number" min="0" class="form-control needs-validation-delivery clearForm"
+                  name="numberOfWorker" placeholder="" required="">
                 <div class="invalid-feedback" style="width: 100%;">لطفا تعداد کارگران را وارد کنید.</div>
               </div>
             </div>
             <div class="mb-3">
               <label for="datetime">تاریخ و زمان</label>
               <div class="input-group">
-                <input type="datetime-local" class="form-control needs-validation-delivery" name="datetime"
+                <input type="datetime-local" class="form-control needs-validation-delivery clearForm" name="datetime"
                   placeholder="" required="">
                 <div class="invalid-feedback" style="width: 100%;">لطفا تاریخ و زمان مورد نظر خود را انتخاب کنید.</div>
               </div>
@@ -124,14 +124,16 @@
             <div class="mb-3">
               <label for="originFloorCount">تعداد طبقات مبدا</label>
               <div class="input-group">
-                <input type="number" min="0" class="form-control" id="originFloorCount" placeholder="" required="">
+                <input type="number" min="0" class="form-control clearForm" id="originFloorCount" placeholder=""
+                  required="">
                 <div class="invalid-feedback" style="width: 100%;">لطفا تعداد طبقات مبدا را وارد کنید.</div>
               </div>
             </div>
             <div class="mb-3">
               <label for="destinationFloorCount">تعداد طبقات مقصد</label>
               <div class="input-group">
-                <input type="number" min="0" class="form-control" id="destinationFloorCount" placeholder="" required="">
+                <input type="number" min="0" class="form-control clearForm" id="destinationFloorCount" placeholder=""
+                  required="">
                 <div class="invalid-feedback" style="width: 100%;">لطفا تعداد طبقات مقصد را وارد کنید.</div>
               </div>
             </div>
@@ -290,9 +292,7 @@
   <script>
     (function () {
       'use strict'
-      window.addEventListener('load', function () {
-        $(document).ready(function () {
-          $("input:radio").change(function () {
+      $("input:radio").change(function () {
             console.log(this);
             var forms;
             if (this.value == '1' && this.name == 'orderType') {
@@ -309,20 +309,14 @@
                 form.classList.add('was-validated')
               }, false)
             })
-          });
-        })
       }, false)
     }())
   </script>
   <!--show extra infos for order-->
   <script>
 
-    $(document).ready(function () {
       $("input:radio").change(function () {
-        console.log(this);
-
         const list = document.getElementById("carTypeRadio");
-
         if (this.value == '1' && this.name == 'orderType') {
           $('#moving-extraInfo').show();
           list.innerHTML = '<p>کامیون</p1>'
@@ -336,61 +330,57 @@
             '<label class="mb-4" for="carTypeNeisan">نیسان</label>')
         }
       });
-    });
-
-
-
 
     const orderForm = document.getElementById('orderForm');
-// console.log(orderForm);
-orderForm.addEventListener('submit', async event => {
-    event.preventDefault();
+    // console.log(orderForm);
+    orderForm.addEventListener('submit', async event => {
+      event.preventDefault();
 
-    const formData = new FormData(orderForm);
-    data = {};
-    for (const [key, value] of formData) {
-    // console.log(key,value);
-    // if(key=="orderType" && value==null) {
-    //     data[key] = 0;
-    // }
-    // else 
+      const formData = new FormData(orderForm);
+      data = {};
+      for (const [key, value] of formData) {
+        // console.log(key,value);
+        // if(key=="orderType" && value==null) {
+        //     data[key] = 0;
+        // }
+        // else 
         data[key] = value;
-    }
-    axios.defaults.withCredentials = true;
-    // if(data.orderType == undefined) 
-//   console.log(data.orderType);
-  axios.post(`${baseRoute}/addRequest`, data).then((response) => {
-    //based on responses success an error must be shown or the page must be redirected to dashbord
-    // console.log("res ",response);
-    let temp = document.getElementById('error3');
-    if(!response.data.success) {
-      temp.style.display = "block";
-      temp.textContent = response.data.message;
-    } else {
-        temp.style.display = "block";
-        temp.textContent = response.data.message;
-    //   location.reload()
-    }
-  })
-  .catch((error) => console.log(error));
+      }
+      axios.defaults.withCredentials = true;
+      // if(data.orderType == undefined) 
+      //   console.log(data.orderType);
+      axios.post(`${baseRoute}/addRequest`, data).then((response) => {
+        //based on responses success an error must be shown or the page must be redirected to dashbord
+        // console.log("res ",response);
+        let temp = document.getElementById('error3');
+        if (!response.data.success) {
+          temp.style.display = "block";
+          temp.textContent = response.data.message;
+        } else {
+          temp.style.display = "block";
+          temp.textContent = response.data.message;
+          orderForm.reset();
+        }
+      })
+        .catch((error) => console.log(error));
 
-});
+    });
 
-const logout = document.getElementById('logout');
-// console.log(orderForm);
-logout.addEventListener('click', async event => {
-    event.preventDefault();
+    const logout = document.getElementById('logout');
+    // console.log(orderForm);
+    logout.addEventListener('click', async event => {
+      event.preventDefault();
 
-    axios.delete(`${baseRoute}/logout`).then((response) => {
-    //based on responses success an error must be shown or the page must be redirected to dashbord
-    // console.log("res ",response);
+      axios.delete(`${baseRoute}/logout`).then((response) => {
+        //based on responses success an error must be shown or the page must be redirected to dashbord
+        // console.log("res ",response);
         window.history.pushState("", "", "/home");
-        
-        location.reload()
-    })
-    .catch((error) => console.log(error));
 
-});
+        location.reload()
+      })
+        .catch((error) => console.log(error));
+
+    });
 
   </script>
 </body>
