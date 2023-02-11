@@ -40,10 +40,10 @@
             <ul class="nav">
               <li class="scroll-to-section"><a href="#order" class="active">سفارش</a></li>
               <li class="scroll-to-section"><a href="#contact">ارتباط با ما</a></li>
-              <!-- <li class="scroll-to-section"><a href="./home">خروج</a></li> -->
-              <li class="scroll-to-section"><button type="button" id="logout">خروج</button></li>
+              <li class="scroll-to-section"><a href="./userProfile">پروفایل</a></li>
+              <!-- <li class="scroll-to-section"><button type="button" id="logout">خروج</button></li> -->
               <li class="scroll-to-section">
-                <div class="main-red-button-hover"><a href="./userProfile">پروفایل</a></div>
+                <div class="main-red-button-hover"><button type="button" id="logout">خروج</button></div>
               </li>
 
             </ul>
@@ -315,6 +315,60 @@
         }
       });
     });
+
+
+
+
+    const orderForm = document.getElementById('orderForm');
+// console.log(orderForm);
+orderForm.addEventListener('submit', async event => {
+    event.preventDefault();
+
+    const formData = new FormData(orderForm);
+    data = {};
+    for (const [key, value] of formData) {
+    // console.log(key,value);
+    // if(key=="orderType" && value==null) {
+    //     data[key] = 0;
+    // }
+    // else 
+        data[key] = value;
+    }
+    axios.defaults.withCredentials = true;
+    // if(data.orderType == undefined) 
+//   console.log(data.orderType);
+  axios.post(`${baseRoute}/addRequest`, data).then((response) => {
+    //based on responses success an error must be shown or the page must be redirected to dashbord
+    // console.log("res ",response);
+    let temp = document.getElementById('error3');
+    if(!response.data.success) {
+      temp.style.display = "block";
+      temp.textContent = response.data.message;
+    } else {
+        temp.style.display = "block";
+        temp.textContent = response.data.message;
+    //   location.reload()
+    }
+  })
+  .catch((error) => console.log(error));
+
+});
+
+const logout = document.getElementById('logout');
+// console.log(orderForm);
+logout.addEventListener('click', async event => {
+    event.preventDefault();
+
+    axios.delete(`${baseRoute}/logout`).then((response) => {
+    //based on responses success an error must be shown or the page must be redirected to dashbord
+    // console.log("res ",response);
+        window.history.pushState("", "", "/home");
+        location.reload()
+    })
+    .catch((error) => console.log(error));
+
+});
+
   </script>
 </body>
 

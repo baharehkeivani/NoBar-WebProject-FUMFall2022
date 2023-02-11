@@ -244,6 +244,36 @@ body {
   background-color: #03a4ed;
 }
 
+.main-red-button button {
+  display: inline-block;
+  background-color: #ff695f;
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 12px 25px;
+  border-radius: 23px;
+  letter-spacing: 0.25px;
+}
+
+.main-red-button-hover button {
+  display: inline-block;
+  background-color: #ff695f;
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 12px 25px;
+  border-radius: 23px;
+  letter-spacing: 0.25px;
+  transition: all .3s;
+  border: none;
+}
+
+.main-red-button-hover button:hover {
+  background-color: #03a4ed;
+}
+
 .main-white-button a {
   display: inline-block;
   background-color: #fff;
