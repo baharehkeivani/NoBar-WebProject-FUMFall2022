@@ -66,14 +66,6 @@
                 <div class="invalid-feedback" style="width: 100%;"> این فیلد یک فیلد الزامی است. </div>
               </div>
             </div>
-            <div class="mb-3">
-              <label for="password">گذرواژه</label>
-              <div class="input-group">
-                <input type="text" id="password" class="form-control needs-validation" name="password" placeholder="گذرواژه"
-                  required="">
-                <div class="invalid-feedback" style="width: 100%;"> این فیلد یک فیلد الزامی است. </div>
-              </div>
-            </div>
             <div class="row mb-3">
               <div class="col-6">
                 <label for="verificationStatus">وضعیت احراز</label>
@@ -166,7 +158,6 @@
       // variable must be given from backend //TODO
       var name = "name";
       var email = "steve@w3schools.com";
-      var pass = "pass1234";
       var verificationStatus = "تایید نشده";
       var driverStatus = "تایید شده";
 
@@ -177,7 +168,6 @@
 
       document.getElementById('name').value = name;
       document.getElementById('email').value = email;
-      document.getElementById('password').value = pass;
 
       verificationVar = document.getElementById('verificationStatus')
       verificationVar.innerText = verificationStatus;
