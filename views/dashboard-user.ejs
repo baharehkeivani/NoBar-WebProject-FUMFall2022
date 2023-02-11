@@ -84,8 +84,8 @@
             <div class="mb-3">
               <label for="workers">تعداد کارگران</label>
               <div class="input-group">
-                <input type="number" min="0" class="form-control needs-validation-delivery" name="numberOfWorker" placeholder=""
-                  required="">
+                <input type="number" min="0" class="form-control needs-validation-delivery" name="numberOfWorker"
+                  placeholder="" required="">
                 <div class="invalid-feedback" style="width: 100%;">لطفا تعداد کارگران را وارد کنید.</div>
               </div>
             </div>
@@ -104,14 +104,19 @@
                   <label for="moving">اثاث‌کشی</label>
                 </div>
                 <div class="custom-control custom-radio">
-                  <input id="delivery" name="orderType" type="radio" required="" value="0">
+                  <input id="delivery" name="orderType" type="radio" checked required="" value="0">
                   <label class="mb-4" for="delivery">جا به جایی بار</label>
                 </div>
               </div>
               <div class="col-6 ">
                 <h6>نوع ماشین</h6>
                 <!--handeled with js  -->
-                <div id="carTypeRadio"></div>
+                <div id="carTypeRadio">
+                  <input type="radio" class="mt-1" id="carTypeVanet" name="orderCarType" value="1">
+                  <label for="carTypeVanet">وانت &nbsp</label>
+                  <input type="radio" id="carTypeNeisan" name="orderCarType" value="0">
+                  <label class="mb-4" for="carTypeNeisan">نیسان</label>
+                </div>
               </div>
             </div>
           </div>
