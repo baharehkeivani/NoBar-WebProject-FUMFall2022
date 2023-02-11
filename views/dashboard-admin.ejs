@@ -56,7 +56,7 @@
   </header>
   <!-- ***** Header Area End ***** -->
 
-  <!-- ***** Requests List Start ***** -->
+  <!-- ***** Unapproved Requests List Start ***** -->
   <div id="services" class="our-services section">
     <div class="services-right-dec">
       <img src="/assets/images/services-right-dec.png" alt="">
@@ -69,7 +69,7 @@
         <div class="col-lg-6 offset-lg-3">
           <div class="section-heading">
             <h2>لیست درخواست ها</h2>
-            <span>پاسخ داده نشده</span>
+            <span>تایید نشده</span>
           </div>
         </div>
       </div>
@@ -78,7 +78,7 @@
       </div>
     </div>
   </div>
-  <!-- ***** Requests List End ***** -->
+  <!-- ***** Unapproved Requests List End ***** -->
 
   <!-- ***** Footer Start ***** -->
   <div class="footer-dec">
@@ -145,19 +145,42 @@
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/scripts.js"></script>
 
-  <!-- get req list from back -->
+  <!-- get unapproved req list from back -->
   <!-- TODO -->
-  <script> //<hr class="m-1">
+  <script>
     window.addEventListener('load', function () {
       //get req list items from back
       var list = document.getElementById('list')
       //for each item we append it ti the list
       var reqID = 120;
+      var orderType = 1;
       var originAdd = "مشهد کوثر ۶"
       var destAdd = "مشهد کوثر 7"
-      var orderType = "اثاث کشی"
+      var numberOfWorkers = 4;
+      var orderCarType = 2;
+      var dateTime = "2023-1-23 12:00:00"
+      var originFloor = 4;
+      var destFloor = 5;
+      var originElevator = true;
+      var destElevator = false;
+
+      var extraCol = ('<div class="col-4">' + 
+        '        <h5>' + 'تعداد طبقات مبدا:' + '</h5>' +
+        '        <p>' + originFloor + '</p>' +
+        '        <hr class="m-1">' +
+        '<h5>' + 'آسانسور باربری در مبدا :' + '</h5>' +
+        '        <p>' + (originElevator ? "دارد" : "ندارد") + '</p>' +
+        '        <hr class="m-1">' +
+        '<h5>' + 'تعداد طبقات مقصد:' + '</h5>' +
+        '        <p>' + destFloor + '</p>' +
+        '        <hr class="m-1">' +
+        '<h5>' + 'آسانسور باربری در مقصد :' + '</h5>' +
+        '        <p>' + (destElevator ? "دارد" : "ندارد") + '</p>' +
+        '</div>');
 
       var inner =
+        '<div class="row">' + 
+        '<div class="col-4">' + 
         '        <h5>' + 'کد درخواست :' + '</h5>' +
         '        <p>' + reqID + '</p>' +
         '        <hr class="m-1">' +
@@ -168,14 +191,27 @@
         '        <p>' + originAdd + '</p>' +
         '        <hr class="m-1">' +
         '<h5>' + 'نوع درخواست :' + '</h5>' +
-        '        <p>' + orderType + '</p>' +
-        '<button id="btn" class="btn btn-info btn-lg btn-block" style="width: 200px;">قبول درخواست</button>';
+        '        <p>' + (orderType == 1 ? "اثاث کشی" : "جا به جایی بار" )+ '</p>' +
+        '</div>' +
+        '<div class="col-4">' + 
+        '<h5>' + 'تاریخ و زمان درخواست:' + '</h5>' +
+        '        <p>' + dateTime + '</p>' +
+        '        <hr class="m-1">' +
+        '<h5>' + 'تعداد کارگران:' + '</h5>' +
+        '        <p>' + numberOfWorkers + '</p>' +
+        '        <hr class="m-1">' +
+        '<h5>' + 'نوع خودرو :' + '</h5>' +
+        '        <p>' + (orderCarType == 0 ? "نیسان" : (orderCarType == 1 ? "وانت" : "کامیون") )+ '</p>' +
+        '</div>' +
+        (orderType == 1 ? extraCol : '' )+
+        '</div>' +
+        '<button id="btn" class="btn btn-primary btn-lg btn-block" style="width: 200px;">تایید درخواست</button>';
 
       list.appendChild(
         Object.assign(
           document.createElement('div'),
           {
-            classList: 'item item-width',
+            classList: 'item ',//item-width
             innerHTML: inner
           }
         )
@@ -192,7 +228,7 @@
       var reqID = Number(reqIDString)
       //if response == 200 then next 2 lines //TODO
       $(this).parent().hide()
-      alert('درخواست مورد نظر توسط شما قبول شد.')
+      alert('درخواست مورد نظر تایید شد.')
     });
   </script>
 </body>
