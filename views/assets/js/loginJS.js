@@ -81,7 +81,7 @@ loginForm.addEventListener('submit', async event => {
   axios.post(`${baseRoute}/login`, data).then((response) => {
     //based on responses success an error must be shown or the page must be redirected to dashbord
     // console.log("res ",response);
-    let temp = document.getElementById('error1');
+    let temp = document.getElementById('error2');
     if(!response.data.success) {
       temp.style.display = "block";
       temp.textContent = response.data.message;

@@ -227,10 +227,10 @@
 
         for (var i = 0; i < list.length; i++) {
 
-          _id = response.data.data[i]._id;
-          name = response.data.data[i].name;
-          email = response.data.data[i].email;
-          createdAt = response.data.data[i].createdAt;
+          _id = response.data.data[i].driver._id;
+          name = response.data.data[i].driver.name;
+          email = response.data.data[i].driver.email;
+          createdAt = response.data.data[i].driver.createdAt;
           plaque = response.data.data[i].plaque;
           plaqueCityNumber = response.data.data[i].plaqueCityNumber;
           color = response.data.data[i].color;
