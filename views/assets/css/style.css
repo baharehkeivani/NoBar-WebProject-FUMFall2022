@@ -183,7 +183,7 @@ body {
   text-transform: uppercase;
   font-weight: 700;
   color: #ff695f;
-  opacity: 0.15;
+  opacity: 0.5;
 }
 
 .main-blue-button a {
@@ -1729,10 +1729,9 @@ footer .footer-item form input::placeholder {
 }
 
 footer .footer-item form button {
-  position: absolute;
-  right: 20px;
-  top: 10px;
+  float: left;
   color: #fff;
+  margin: 10px;
   background-color: transparent;
   border: none;
   outline: none;

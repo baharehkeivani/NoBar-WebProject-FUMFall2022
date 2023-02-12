@@ -87,35 +87,31 @@
       <h2 style="margin-bottom: 30px;">ارتباط با ما</h2>
       <div class="row">
         <div class="col-sm-12 align-self-center">
-          <form id="contact" action="" method="get">
-            <div class="row">
-              <div class="col-lg-12">
-                <fieldset>
-                  <input type="name" name="name" id="name" placeholder="نام" autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <input type="surname" name="surname" id="surname" placeholder="نام خانوادگی" autocomplete="on"
-                    required>
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="ایمیل" required="">
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <textarea id="website" name="website" rows="4" cols="50" placeholder="پیام خود را بنویسید."
-                    required></textarea>
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <button type="submit" id="form-submit" class="main-button">ارسال پیام</button>
-                </fieldset>
-              </div>
+          <form id="contactUsForm" class="row">
+            <div class="col-lg-12">
+              <fieldset>
+                <input type="name" name="name" id="name" placeholder="نام" autocomplete="on" required>
+              </fieldset>
+            </div>
+            <div class="col-lg-12">
+              <fieldset>
+                <input type="surname" name="surname" id="surname" placeholder="نام خانوادگی" autocomplete="on" required>
+              </fieldset>
+            </div>
+            <div class="col-lg-12">
+              <fieldset>
+                <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="ایمیل" required="">
+              </fieldset>
+            </div>
+            <div class="col-lg-12">
+              <fieldset>
+                <textarea id="website" name="comment" rows="4" cols="50" placeholder="پیام خود را بنویسید."
+                  required></textarea>
+                <p id="error6" class="success"></p>
+              </fieldset>
+            </div>
+            <div class="col-lg-12">
+              <button type="submit" class="main-button">ارسال پیام</button>
             </div>
           </form>
         </div>
@@ -123,17 +119,21 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="info">
-            <span><i class="fa fa-phone"></i> <a href="#">010-020-0340<br>090-080-0760</a></span>
+            <span><i class="fa fa-phone"></i> <a href="#">09337397763<br>09152201537</a></span>
             <span><i class="fa fa-envelope"></i> <a href="#">info@company.com<br>mail@company.com</a></span>
           </div>
         </div>
       </div>
     </div>
+
     <div class="contact-dec">
       <img src="/assets/images/contact-dec.png" alt="">
     </div>
+    <div class="contact-left-dec">
+      <img src="/assets/images/contact-left-dec.png" alt="">
+    </div>
   </div>
-  <!-- ***** Contacr Us End ***** -->
+  <!-- ***** Contact Us End ***** -->
 
   <!-- ***** Footer Start ***** -->
   <div class="footer-dec">
@@ -157,7 +157,7 @@
         </div>
         <div class="col-lg-4">
           <div class="services footer-item">
-            <h4>Services</h4>
+            <h4>سرویس ها</h4>
             <ul>
               <li><a href="#">حمل بار بین شهری</a></li>
               <li><a href="#">اسباب کشی</a></li>
@@ -171,9 +171,10 @@
             <h4>خبرنامه نوبار را دنبال کنید</h4>
             <p>تا در جریان جدید ترین اخبار ما باشید.</p>
             <form action="#" method="get">
-              <button type="submit" id="form-submit" class="main-button"><i class="fa fa-paper-plane-o"></i></button>
               <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="ایمیل خود را وارد کنید."
                 required="">
+              <button type="submit" id="form-submit" class="main-button"><i class="fa fa-paper-plane-o"></i></button>
+          
             </form>
           </div>
         </div>
@@ -205,104 +206,104 @@
   <!-- get req list from back -->
   <!-- TODO -->
 
-<script>
-  const baseRoute = "http://127.0.0.1:4000/v1";
-  window.addEventListener('load', function () {
-    //get req list items from back
-    var list = [];
-    var item = document.getElementById('list')
+  <script>
+    const baseRoute = "http://127.0.0.1:4000/v1";
+    window.addEventListener('load', function () {
+      //get req list items from back
+      var list = [];
+      var item = document.getElementById('list')
 
 
-    //for each item we append it ti the list
-    var _id = null;
-    var orderType = null;
-    var origin = null;
-    var destination = null;
-    var numberOfWorker = null;
-    var orderCarType = null;
-    var datetime = null;
-    var originFloorCount = null;
-    var destinationFloorCount = null;
-    var originElevatorExists = null;
-    var destinationElevatorExists = null;
-    // var user = null;
+      //for each item we append it ti the list
+      var _id = null;
+      var orderType = null;
+      var origin = null;
+      var destination = null;
+      var numberOfWorker = null;
+      var orderCarType = null;
+      var datetime = null;
+      var originFloorCount = null;
+      var destinationFloorCount = null;
+      var originElevatorExists = null;
+      var destinationElevatorExists = null;
+      // var user = null;
 
-    axios.defaults.withCredentials = true;
-    axios.get(`${baseRoute}/getDriverlessOrders`).then((response) => {
-      console.log(response);
-      list = response.data.data;
+      axios.defaults.withCredentials = true;
+      axios.get(`${baseRoute}/getDriverlessOrders`).then((response) => {
+        console.log(response);
+        list = response.data.data;
 
-      for(var i=0;i<list.length;i++) {
-        _id = response.data.data[i]._id;
-      orderType = response.data.data[i].orderType;
-      origin = response.data.data[i].origin;
-      destination = response.data.data[i].destination;
-      numberOfWorker = response.data.data[i].numberOfWorker;
-      orderCarType = response.data.data[i].orderCarType;
-      datetime = response.data.data[i].datetime;
-      originFloorCount = response.data.data[i].originFloorCount;
-      destinationFloorCount = response.data.data[i].destinationFloorCount;
-      originElevatorExists = response.data.data[i].originElevatorExists;
-      destinationElevatorExists = response.data.data[i].destinationElevatorExists;
-      // user = response.data.data.user.name;
+        for (var i = 0; i < list.length; i++) {
+          _id = response.data.data[i]._id;
+          orderType = response.data.data[i].orderType;
+          origin = response.data.data[i].origin;
+          destination = response.data.data[i].destination;
+          numberOfWorker = response.data.data[i].numberOfWorker;
+          orderCarType = response.data.data[i].orderCarType;
+          datetime = response.data.data[i].datetime;
+          originFloorCount = response.data.data[i].originFloorCount;
+          destinationFloorCount = response.data.data[i].destinationFloorCount;
+          originElevatorExists = response.data.data[i].originElevatorExists;
+          destinationElevatorExists = response.data.data[i].destinationElevatorExists;
+          // user = response.data.data.user.name;
 
-      var extraCol = ('<div class="col-4">' + 
-      '        <h5>' + 'تعداد طبقات مبدا:' + '</h5>' +
-      '        <p>' + originFloorCount + '</p>' +
-      '        <hr class="m-1">' +
-      '<h5>' + 'آسانسور باربری در مبدا :' + '</h5>' +
-      '        <p>' + (originElevatorExists ? "دارد" : "ندارد") + '</p>' +
-      '        <hr class="m-1">' +
-      '<h5>' + 'تعداد طبقات مقصد:' + '</h5>' +
-      '        <p>' + destinationFloorCount + '</p>' +
-      '        <hr class="m-1">' +
-      '<h5>' + 'آسانسور باربری در مقصد :' + '</h5>' +
-      '        <p>' + (destinationElevatorExists ? "دارد" : "ندارد") + '</p>' +
-      '</div>');
+          var extraCol = ('<div class="col-4">' +
+            '        <h5>' + 'تعداد طبقات مبدا:' + '</h5>' +
+            '        <p>' + originFloorCount + '</p>' +
+            '        <hr class="m-1">' +
+            '<h5>' + 'آسانسور باربری در مبدا :' + '</h5>' +
+            '        <p>' + (originElevatorExists ? "دارد" : "ندارد") + '</p>' +
+            '        <hr class="m-1">' +
+            '<h5>' + 'تعداد طبقات مقصد:' + '</h5>' +
+            '        <p>' + destinationFloorCount + '</p>' +
+            '        <hr class="m-1">' +
+            '<h5>' + 'آسانسور باربری در مقصد :' + '</h5>' +
+            '        <p>' + (destinationElevatorExists ? "دارد" : "ندارد") + '</p>' +
+            '</div>');
 
-    var inner =
-      '<div class="row">' + 
-      '<div class="col-4">' + 
-      '        <h5>' + 'درخواست  :' + '</h5>' +
-      '        <p>' + _id + '</p>' +
-      '        <hr class="m-1">' +
-      '<h5>' + 'آدرس مبدا :' + '</h5>' +
-      '        <p>' + origin + '</p>' +
-      '        <hr class="m-1">' +
-      '<h5>' + 'آدرس مقصد :' + '</h5>' +
-      '        <p>' + destination + '</p>' +
-      '        <hr class="m-1">' +
-      '<h5>' + 'نوع درخواست :' + '</h5>' +
-      '        <p>' + (orderType == 1 ? "اثاث کشی" : "جا به جایی بار" )+ '</p>' +
-      '</div>' +
-      '<div class="col-4">' + 
-      '<h5>' + 'تاریخ و زمان درخواست:' + '</h5>' +
-      '        <p>' + datetime + '</p>' +
-      '        <hr class="m-1">' +
-      '<h5>' + 'تعداد کارگران:' + '</h5>' +
-      '        <p>' + numberOfWorker + '</p>' +
-      '        <hr class="m-1">' +
-      '<h5>' + 'نوع خودرو :' + '</h5>' +
-      '        <p>' + (orderCarType == 0 ? "نیسان" : (orderCarType == 1 ? "وانت" : "کامیون") )+ '</p>' +
-      '</div>' +
-      (orderType == 1 ? extraCol : '' )+
-      '</div>' +
-      '<button id="btn" class="btn btn-primary btn-lg btn-block" style="width: 200px;">قبول درخواست</button>';
+          var inner =
+            '<div class="row">' +
+            '<div class="col-4">' +
+            '        <h5>' + 'درخواست  :' + '</h5>' +
+            '        <p>' + _id + '</p>' +
+            '        <hr class="m-1">' +
+            '<h5>' + 'آدرس مبدا :' + '</h5>' +
+            '        <p>' + origin + '</p>' +
+            '        <hr class="m-1">' +
+            '<h5>' + 'آدرس مقصد :' + '</h5>' +
+            '        <p>' + destination + '</p>' +
+            '        <hr class="m-1">' +
+            '<h5>' + 'نوع درخواست :' + '</h5>' +
+            '        <p>' + (orderType == 1 ? "اثاث کشی" : "جا به جایی بار") + '</p>' +
+            '</div>' +
+            '<div class="col-4">' +
+            '<h5>' + 'تاریخ و زمان درخواست:' + '</h5>' +
+            '        <p>' + datetime + '</p>' +
+            '        <hr class="m-1">' +
+            '<h5>' + 'تعداد کارگران:' + '</h5>' +
+            '        <p>' + numberOfWorker + '</p>' +
+            '        <hr class="m-1">' +
+            '<h5>' + 'نوع خودرو :' + '</h5>' +
+            '        <p>' + (orderCarType == 0 ? "نیسان" : (orderCarType == 1 ? "وانت" : "کامیون")) + '</p>' +
+            '</div>' +
+            (orderType == 1 ? extraCol : '') +
+            '</div>' +
+            '<button id="btn" class="btn btn-primary btn-lg btn-block" style="width: 200px;">قبول درخواست</button>';
 
-      item.appendChild(
-      Object.assign(
-        document.createElement('div'),
-        {
-          classList: 'item ',//item-width
-          innerHTML: inner
+          item.appendChild(
+            Object.assign(
+              document.createElement('div'),
+              {
+                classList: 'item ',//item-width
+                innerHTML: inner
+              }
+            )
+          )
         }
-      )
-    )
-      }
-  }).catch((error) => console.log(error));
+      }).catch((error) => console.log(error));
 
-})
-</script>
+    })
+  </script>
 
 
   <!-- on click on submit-->
@@ -313,7 +314,7 @@
 
       axios.defaults.withCredentials = true;
 
-      axios.put(`${baseRoute}/acceptOrder`, { _id : _id}).then( async (response) => {
+      axios.put(`${baseRoute}/acceptOrder`, { _id: _id }).then(async (response) => {
         //based on responses success an error must be shown or the page must be redirected to dashbord
         if (response.data.success) {
           await location.reload()
@@ -326,6 +327,31 @@
 
       $(this).parent().hide()
       // alert('درخواست مورد نظر انجام شد.')
+    });
+  </script>
+
+  <!-- contact us script -->
+  <script>
+    const contactUs = document.getElementById('contactUsForm');
+    console.log(contactUs);
+    contactUs.addEventListener('submit', event => {
+      const baseRoute = "http://127.0.0.1:4000/v1";
+      event.preventDefault();
+      console.log("what even");
+      const formData = new FormData(contactUs);
+      data = {};
+      for (const [key, value] of formData) {
+        data[key] = value;
+      }
+      axios.defaults.withCredentials = true;
+      console.log("data s ", data);
+      axios.post(`${baseRoute}/postComment`, data).then((response) => {
+        let temp = document.getElementById('error6');
+        temp.style.display = "block";
+        temp.textContent = response.data.message;
+      })
+        .catch((error) => console.log(error));
+
     });
   </script>
 

@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="نوبار اولین سامانه حمل و نقل بار">
-    <meta name="author" content="نوبار">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet">
-  
-    <title>نوبار</title>
-  
-    <!-- Bootstrap core CSS -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/animated.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="نوبار اولین سامانه حمل و نقل بار">
+  <meta name="author" content="نوبار">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <title>نوبار</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="/assets/css/fontawesome.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/animated.css">
+</head>
 
 <body>
   <!-- ***** Header Area Start ***** -->
@@ -159,8 +159,7 @@
             </div>
             <div class="col-lg-12">
               <fieldset>
-                <input type="surname" name="surname" id="surname" placeholder="نام خانوادگی" autocomplete="on"
-                  required>
+                <input type="surname" name="surname" id="surname" placeholder="نام خانوادگی" autocomplete="on" required>
               </fieldset>
             </div>
             <div class="col-lg-12">
@@ -172,7 +171,7 @@
               <fieldset>
                 <textarea id="website" name="comment" rows="4" cols="50" placeholder="پیام خود را بنویسید."
                   required></textarea>
-                  <p id="error6" class="success"></p>
+                <p id="error6" class="success"></p>
               </fieldset>
             </div>
             <div class="col-lg-12">
@@ -253,7 +252,7 @@
         </div>
         <div class="col-lg-4">
           <div class="services footer-item">
-            <h4>Services</h4>
+            <h4>سرویس ها</h4>
             <ul>
               <li><a href="#">حمل بار بین شهری</a></li>
               <li><a href="#">اسباب کشی</a></li>
@@ -267,9 +266,10 @@
             <h4>خبرنامه نوبار را دنبال کنید</h4>
             <p>تا در جریان جدید ترین اخبار ما باشید.</p>
             <form action="#" method="get">
-              <button type="submit" id="form-submit" class="main-button"><i class="fa fa-paper-plane-o"></i></button>
               <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="ایمیل خود را وارد کنید."
                 required="">
+              <button type="submit" id="form-submit" class="main-button"><i class="fa fa-paper-plane-o"></i></button>
+          
             </form>
           </div>
         </div>
@@ -289,14 +289,14 @@
 
   <!-- Scripts -->
   <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/owl-carousel.js"></script>
-    <script src="/assets/js/animation.js"></script>
-    <script src="/assets/js/imagesloaded.js"></script>
-    <script src="/assets/js/custom.js"></script>
-    <script src="/assets/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/owl-carousel.js"></script>
+  <script src="/assets/js/animation.js"></script>
+  <script src="/assets/js/imagesloaded.js"></script>
+  <script src="/assets/js/custom.js"></script>
+  <script src="/assets/js/scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   <script>
     var acc = document.getElementsByClassName("accordion");
@@ -314,6 +314,7 @@
     }
   </script>
 
+  <!-- contact us script -->
   <script>
     const contactUs = document.getElementById('contactUsForm');
     console.log(contactUs);
@@ -333,10 +334,11 @@
         temp.style.display = "block";
         temp.textContent = response.data.message;
       })
-      .catch((error) => console.log(error));
+        .catch((error) => console.log(error));
 
-  });
+    });
   </script>
 
 </body>
+
 </html>

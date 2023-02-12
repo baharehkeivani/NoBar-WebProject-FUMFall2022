@@ -63,7 +63,7 @@
     <div class="container">
       <h2 class="py-5 text-center">ثبت سفارش</h2>
       <form class="needs-validation" novalidate="" id="orderForm">
-        <div class="row">
+        <div class="row" id="x">
           <div class="col-6">
             <div class="mb-3">
               <label for="origin">آدرس مبدا</label>
@@ -172,35 +172,31 @@
       <h2 style="margin-bottom: 30px;">ارتباط با ما</h2>
       <div class="row">
         <div class="col-sm-12 align-self-center">
-          <form id="contact" action="" method="get">
-            <div class="row">
-              <div class="col-lg-12">
-                <fieldset>
-                  <input type="name" name="name" id="name" placeholder="نام" autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <input type="surname" name="surname" id="surname" placeholder="نام خانوادگی" autocomplete="on"
-                    required>
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="ایمیل" required="">
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <textarea id="website" name="website" rows="4" cols="50" placeholder="پیام خود را بنویسید."
-                    required></textarea>
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <button type="submit" id="form-submit" class="main-button">ارسال پیام</button>
-                </fieldset>
-              </div>
+          <form id="contactUsForm" class="row">
+            <div class="col-lg-12">
+              <fieldset>
+                <input type="name" name="name" id="name" placeholder="نام" autocomplete="on" required>
+              </fieldset>
+            </div>
+            <div class="col-lg-12">
+              <fieldset>
+                <input type="surname" name="surname" id="surname" placeholder="نام خانوادگی" autocomplete="on" required>
+              </fieldset>
+            </div>
+            <div class="col-lg-12">
+              <fieldset>
+                <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="ایمیل" required="">
+              </fieldset>
+            </div>
+            <div class="col-lg-12">
+              <fieldset>
+                <textarea id="website" name="comment" rows="4" cols="50" placeholder="پیام خود را بنویسید."
+                  required></textarea>
+                <p id="error6" class="success"></p>
+              </fieldset>
+            </div>
+            <div class="col-lg-12">
+              <button type="submit" class="main-button">ارسال پیام</button>
             </div>
           </form>
         </div>
@@ -208,17 +204,21 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="info">
-            <span><i class="fa fa-phone"></i> <a href="#">010-020-0340<br>090-080-0760</a></span>
+            <span><i class="fa fa-phone"></i> <a href="#">09337397763<br>09152201537</a></span>
             <span><i class="fa fa-envelope"></i> <a href="#">info@company.com<br>mail@company.com</a></span>
           </div>
         </div>
       </div>
     </div>
+
     <div class="contact-dec">
       <img src="/assets/images/contact-dec.png" alt="">
     </div>
+    <div class="contact-left-dec">
+      <img src="/assets/images/contact-left-dec.png" alt="">
+    </div>
   </div>
-  <!-- ***** Contacr Us End ***** -->
+  <!-- ***** Contact Us End ***** -->
 
   <!-- ***** Footer Start ***** -->
   <div class="footer-dec">
@@ -242,7 +242,7 @@
         </div>
         <div class="col-lg-4">
           <div class="services footer-item">
-            <h4>Services</h4>
+            <h4>سرویس ها</h4>
             <ul>
               <li><a href="#">حمل بار بین شهری</a></li>
               <li><a href="#">اسباب کشی</a></li>
@@ -256,9 +256,10 @@
             <h4>خبرنامه نوبار را دنبال کنید</h4>
             <p>تا در جریان جدید ترین اخبار ما باشید.</p>
             <form action="#" method="get">
-              <button type="submit" id="form-submit" class="main-button"><i class="fa fa-paper-plane-o"></i></button>
               <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="ایمیل خود را وارد کنید."
                 required="">
+              <button type="submit" id="form-submit" class="main-button"><i class="fa fa-paper-plane-o"></i></button>
+          
             </form>
           </div>
         </div>
@@ -293,70 +294,70 @@
     (function () {
       'use strict'
       $("input:radio").change(function () {
-            console.log(this);
-            var forms;
-            if (this.value == '1' && this.name == 'orderType') {
-              forms = document.getElementsByClassName('needs-validation')
-            } else if (this.value == '0' && this.name == 'orderType') {
-              forms = document.getElementsByClassName('needs-validation-delivery')
+        console.log(this);
+        var forms;
+        if (this.value == '1' && this.name == 'orderType') {
+          forms = document.getElementsByClassName('needs-validation')
+        } else if (this.value == '0' && this.name == 'orderType') {
+          forms = document.getElementsByClassName('needs-validation-delivery')
+        }
+        Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault()
+              event.stopPropagation()
             }
-            Array.prototype.filter.call(forms, function (form) {
-              form.addEventListener('submit', function (event) {
-                if (form.checkValidity() === false) {
-                  event.preventDefault()
-                  event.stopPropagation()
-                }
-                form.classList.add('was-validated')
-              }, false)
-            })
+            form.classList.add('was-validated')
+          }, false)
+        })
       }, false)
     }())
   </script>
   <!--show extra infos for order-->
   <script>
 
-      $("input:radio").change(function () {
-        const list = document.getElementById("carTypeRadio");
-        if (this.value == '1' && this.name == 'orderType') {
-          $('#moving-extraInfo').show();
-          list.innerHTML = '<p>کامیون</p1>'
+    $("input:radio").change(function () {
+      const list = document.getElementById("carTypeRadio");
+      if (this.value == '1' && this.name == 'orderType') {
+        $('#moving-extraInfo').show();
+        list.innerHTML = '<p>کامیون</p1>'
 
-        } else if (this.value == '0' && this.name == 'orderType') {
-          $('#moving-extraInfo').hide();
-          list.innerHTML = (
-            '<input type="radio" class="mt-1" id="carTypeVanet" name="orderCarType" value="1">' +
-            '<label for="carTypeVanet">وانت &nbsp</label>' +
-            '<input type="radio" id="carTypeNeisan" name="orderCarType" value="0">' +
-            '<label class="mb-4" for="carTypeNeisan">نیسان</label>')
-        }
-      });
+      } else if (this.value == '0' && this.name == 'orderType') {
+        $('#moving-extraInfo').hide();
+        list.innerHTML = (
+          '<input type="radio" class="mt-1" id="carTypeVanet" name="orderCarType" value="1">' +
+          '<label for="carTypeVanet">وانت &nbsp</label>' +
+          '<input type="radio" id="carTypeNeisan" name="orderCarType" value="0">' +
+          '<label class="mb-4" for="carTypeNeisan">نیسان</label>')
+      }
+    });
 
 
     const baseRoute = "http://127.0.0.1:4000/v1";
     const orderForm = document.getElementById('orderForm');
     orderForm.addEventListener('submit', async event => {
-    event.preventDefault();
+      event.preventDefault();
 
-      const formData = new FormData(orderForm);
+      const formData = new FormData(event.target);
       data = {};
       for (const [key, value] of formData) {
         data[key] = value;
       }
       console.log(data);
       axios.defaults.withCredentials = true;
-      axios.post(`${baseRoute}/addRequest`, data).then((response) => {
-        //based on responses success an error must be shown or the page must be redirected to dashbord
-        let temp = document.getElementById('error3');
-        if (!response.data.success) {
-          temp.style.display = "block";
-          temp.textContent = response.data.message;
-        } else {
-          temp.style.display = "block";
-          temp.textContent = response.data.message;
-          orderForm.reset();
-        }
-      })
-        .catch((error) => console.log(error));
+      // axios.post(`${baseRoute}/addRequest`, data).then((response) => {
+      //   //based on responses success an error must be shown or the page must be redirected to dashbord
+      //   let temp = document.getElementById('error3');
+      //   if (!response.data.success) {
+      //     temp.style.display = "block";
+      //     temp.textContent = response.data.message;
+      //   } else {
+      //     temp.style.display = "block";
+      //     temp.textContent = response.data.message;
+      //     orderForm.reset();
+      //   }
+      // })
+      //   .catch((error) => console.log(error));
 
     });
 
@@ -365,24 +366,50 @@
     logout.addEventListener('click', async event => {
       event.preventDefault();
 
-    axios.get(`${baseRoute}/logout`).then((response) => {
-    //based on responses success an error must be shown or the page must be redirected to dashbord
-    // console.log("res ",response);
-      // document.cookie = "token" + "=" +
-      //   ";path="+"=/"+
-      //   ";domain="+"http://127.0.0.1:3000"+
-      //   ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
-      // document.cookie = "token= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
-      document.cookie = "token"+'=; Max-Age=-99999999;';
-      window.history.pushState("", "", "/home");
-      
-      location.reload()
-    })
-    .catch((error) => console.log(error));
+      axios.get(`${baseRoute}/logout`).then((response) => {
+        //based on responses success an error must be shown or the page must be redirected to dashbord
+        // console.log("res ",response);
+        // document.cookie = "token" + "=" +
+        //   ";path="+"=/"+
+        //   ";domain="+"http://127.0.0.1:3000"+
+        //   ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+        // document.cookie = "token= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+        document.cookie = "token" + '=; Max-Age=-99999999;';
+        window.history.pushState("", "", "/home");
+
+        location.reload()
+      })
+        .catch((error) => console.log(error));
 
     });
 
   </script>
+
+  <!-- contact us script -->
+  <script>
+    const contactUs = document.getElementById('contactUsForm');
+    console.log(contactUs);
+    contactUs.addEventListener('submit', event => {
+      const baseRoute = "http://127.0.0.1:4000/v1";
+      event.preventDefault();
+      console.log("what even");
+      const formData = new FormData(contactUs);
+      data = {};
+      for (const [key, value] of formData) {
+        data[key] = value;
+      }
+      axios.defaults.withCredentials = true;
+      console.log("data s ", data);
+      axios.post(`${baseRoute}/postComment`, data).then((response) => {
+        let temp = document.getElementById('error6');
+        temp.style.display = "block";
+        temp.textContent = response.data.message;
+      })
+        .catch((error) => console.log(error));
+
+    });
+  </script>
+
 </body>
 
 </html>
