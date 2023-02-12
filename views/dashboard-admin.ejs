@@ -245,7 +245,7 @@
             '        <h4>' + 'اطلاعات راننده :' + '</h4>' +
             '        <br>' +
             '<h5>' + 'کد راننده :' + '</h5>' +
-            '        <p id="ehrazID" >' + _id + '</p>' +
+            '        <p>' + _id + '</p>' +
             '        <hr class="m-1">' +
             '<h5>' + 'نام :' + '</h5>' +
             '        <p>' + name + '</p>' +
@@ -294,8 +294,8 @@
       const baseRoute = "http://127.0.0.1:4000/v1";
 
       //send to backend using request id //TODO
-      var _id = $(this).parent().children().get(0).firstChild.children.item(1).innerText;
-
+      var _id = $(this).parent().children().get(0).firstChild.children.item(3).innerText;
+      // console.log("id is ",$(this).parent().children().get(0).firstChild.children.item(3).innerText );
       axios.defaults.withCredentials = true;
       axios.put(`${baseRoute}/verifyDriver`, { _id: _id }).then(async (response) => {
         //based on responses success an error must be shown or the page must be redirected to dashbord
@@ -309,7 +309,7 @@
         .catch((error) => console.log(error));
 
       $(this).parent().hide()
-      // alert('درخواست مورد نظر انجام شد.')
+      alert('درخواست مورد نظر انجام شد.')
     });
   </script>
 
@@ -341,7 +341,7 @@
 
           var inner =
             '<h5>' + 'کد کاربر :' + '</h5>' +
-            '        <p id="ehrazID">' + _id + '</p>' +
+            '        <p>' + _id + '</p>' +
             '        <hr class="m-1">' +
             '<h5>' + 'نام :' + '</h5>' +
             '        <p>' + name + '</p>' +
@@ -373,7 +373,7 @@
       const baseRoute = "http://127.0.0.1:4000/v1";
 
       //send to backend using request id //TODO
-      var _id = $(this).parent().children().get(0).firstChild.children.item(1).innerText;
+      var _id = $(this).parent().children().get(0).firstChild.children.item(3).innerText;
 
       axios.defaults.withCredentials = true;
       axios.put(`${baseRoute}/verifyUser`, { _id: _id }).then(async (response) => {
@@ -452,7 +452,7 @@
           var inner =
             '<div class="row">' +
             '<div class="col-4">' +
-            '        <h5 id="reqIDApprove">' + 'کد درخواست  :' + '</h5>' +
+            '        <h5>' + 'کد درخواست  :' + '</h5>' +
             '        <p id="dbId">' + _id + '</p>' +
             '        <hr class="m-1">' +
             '<h5>' + 'آدرس مبدا :' + '</h5>' +
@@ -502,8 +502,10 @@
     $(document).on('click', '#btn', function (event) {
       const baseRoute = "http://127.0.0.1:4000/v1";
       //send to backend using request id //TODO
-      var _id = Number($('#ehrazID').innerText);
+      var _id = $(this).parent().children().get(0).firstChild.children.item(1).innerText;
+
       axios.defaults.withCredentials = true;
+
       axios.put(`${baseRoute}/verifyOrder`, { _id: _id }).then(async (response) => {
         //based on responses success an error must be shown or the page must be redirected to dashbord
         if (response.data.success) {
