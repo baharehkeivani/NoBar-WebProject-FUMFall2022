@@ -199,93 +199,136 @@
   <script src="/assets/js/imagesloaded.js"></script>
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   <!-- get req list from back -->
   <!-- TODO -->
-  <script> 
-    window.addEventListener('load', function () {
-      //get req list items from back
-      var list = document.getElementById('list')
-      //for each item we append it ti the list
-      var reqID = 120;
-      var orderType = 1;
-      var originAdd = "مشهد کوثر ۶"
-      var destAdd = "مشهد کوثر 7"
-      var numberOfWorkers = 4;
-      var orderCarType = 2;
-      var dateTime = "2023-1-23 12:00:00"
-      var originFloor = 4;
-      var destFloor = 5;
-      var originElevator = true;
-      var destElevator = false;
+
+<script>
+  const baseRoute = "http://127.0.0.1:4000/v1";
+  window.addEventListener('load', function () {
+    //get req list items from back
+    var list = [];
+    var item = document.getElementById('list')
+
+
+    //for each item we append it ti the list
+    var _id = null;
+    var orderType = null;
+    var origin = null;
+    var destination = null;
+    var numberOfWorker = null;
+    var orderCarType = null;
+    var datetime = null;
+    var originFloorCount = null;
+    var destinationFloorCount = null;
+    var originElevatorExists = null;
+    var destinationElevatorExists = null;
+    // var user = null;
+
+    axios.defaults.withCredentials = true;
+    axios.get(`${baseRoute}/getDriverlessOrders`).then((response) => {
+      console.log(response);
+      list = response.data.data;
+
+      for(var i=0;i<list.length;i++) {
+        _id = response.data.data[i]._id;
+      orderType = response.data.data[i].orderType;
+      origin = response.data.data[i].origin;
+      destination = response.data.data[i].destination;
+      numberOfWorker = response.data.data[i].numberOfWorker;
+      orderCarType = response.data.data[i].orderCarType;
+      datetime = response.data.data[i].datetime;
+      originFloorCount = response.data.data[i].originFloorCount;
+      destinationFloorCount = response.data.data[i].destinationFloorCount;
+      originElevatorExists = response.data.data[i].originElevatorExists;
+      destinationElevatorExists = response.data.data[i].destinationElevatorExists;
+      // user = response.data.data.user.name;
 
       var extraCol = ('<div class="col-4">' + 
-        '        <h5>' + 'تعداد طبقات مبدا:' + '</h5>' +
-        '        <p>' + originFloor + '</p>' +
-        '        <hr class="m-1">' +
-        '<h5>' + 'آسانسور باربری در مبدا :' + '</h5>' +
-        '        <p>' + (originElevator ? "دارد" : "ندارد") + '</p>' +
-        '        <hr class="m-1">' +
-        '<h5>' + 'تعداد طبقات مقصد:' + '</h5>' +
-        '        <p>' + destFloor + '</p>' +
-        '        <hr class="m-1">' +
-        '<h5>' + 'آسانسور باربری در مقصد :' + '</h5>' +
-        '        <p>' + (destElevator ? "دارد" : "ندارد") + '</p>' +
-        '</div>');
+      '        <h5>' + 'تعداد طبقات مبدا:' + '</h5>' +
+      '        <p>' + originFloorCount + '</p>' +
+      '        <hr class="m-1">' +
+      '<h5>' + 'آسانسور باربری در مبدا :' + '</h5>' +
+      '        <p>' + (originElevatorExists ? "دارد" : "ندارد") + '</p>' +
+      '        <hr class="m-1">' +
+      '<h5>' + 'تعداد طبقات مقصد:' + '</h5>' +
+      '        <p>' + destinationFloorCount + '</p>' +
+      '        <hr class="m-1">' +
+      '<h5>' + 'آسانسور باربری در مقصد :' + '</h5>' +
+      '        <p>' + (destinationElevatorExists ? "دارد" : "ندارد") + '</p>' +
+      '</div>');
 
-      var inner =
-        '<div class="row">' + 
-        '<div class="col-4">' + 
-        '        <h5>' + 'کد درخواست :' + '</h5>' +
-        '        <p>' + reqID + '</p>' +
-        '        <hr class="m-1">' +
-        '<h5>' + 'آدرس مبدا :' + '</h5>' +
-        '        <p>' + originAdd + '</p>' +
-        '        <hr class="m-1">' +
-        '<h5>' + 'آدرس مقصد :' + '</h5>' +
-        '        <p>' + originAdd + '</p>' +
-        '        <hr class="m-1">' +
-        '<h5>' + 'نوع درخواست :' + '</h5>' +
-        '        <p>' + (orderType == 1 ? "اثاث کشی" : "جا به جایی بار" )+ '</p>' +
-        '</div>' +
-        '<div class="col-4">' + 
-        '<h5>' + 'تاریخ و زمان درخواست:' + '</h5>' +
-        '        <p>' + dateTime + '</p>' +
-        '        <hr class="m-1">' +
-        '<h5>' + 'تعداد کارگران:' + '</h5>' +
-        '        <p>' + numberOfWorkers + '</p>' +
-        '        <hr class="m-1">' +
-        '<h5>' + 'نوع خودرو :' + '</h5>' +
-        '        <p>' + (orderCarType == 0 ? "نیسان" : (orderCarType == 1 ? "وانت" : "کامیون") )+ '</p>' +
-        '</div>' +
-        (orderType == 1 ? extraCol : '' )+
-        '</div>' +
-        '<button id="btn" class="btn btn-primary btn-lg btn-block" style="width: 200px;">تایید درخواست</button>';
+    var inner =
+      '<div class="row">' + 
+      '<div class="col-4">' + 
+      '        <h5>' + 'درخواست  :' + '</h5>' +
+      '        <p>' + _id + '</p>' +
+      '        <hr class="m-1">' +
+      '<h5>' + 'آدرس مبدا :' + '</h5>' +
+      '        <p>' + origin + '</p>' +
+      '        <hr class="m-1">' +
+      '<h5>' + 'آدرس مقصد :' + '</h5>' +
+      '        <p>' + destination + '</p>' +
+      '        <hr class="m-1">' +
+      '<h5>' + 'نوع درخواست :' + '</h5>' +
+      '        <p>' + (orderType == 1 ? "اثاث کشی" : "جا به جایی بار" )+ '</p>' +
+      '</div>' +
+      '<div class="col-4">' + 
+      '<h5>' + 'تاریخ و زمان درخواست:' + '</h5>' +
+      '        <p>' + datetime + '</p>' +
+      '        <hr class="m-1">' +
+      '<h5>' + 'تعداد کارگران:' + '</h5>' +
+      '        <p>' + numberOfWorker + '</p>' +
+      '        <hr class="m-1">' +
+      '<h5>' + 'نوع خودرو :' + '</h5>' +
+      '        <p>' + (orderCarType == 0 ? "نیسان" : (orderCarType == 1 ? "وانت" : "کامیون") )+ '</p>' +
+      '</div>' +
+      (orderType == 1 ? extraCol : '' )+
+      '</div>' +
+      '<button id="btn" class="btn btn-primary btn-lg btn-block" style="width: 200px;">قبول درخواست</button>';
 
-      list.appendChild(
-        Object.assign(
-          document.createElement('div'),
-          {
-            classList: 'item ',//item-width
-            innerHTML: inner
-          }
-        )
+      item.appendChild(
+      Object.assign(
+        document.createElement('div'),
+        {
+          classList: 'item ',//item-width
+          innerHTML: inner
+        }
       )
+    )
+      }
+  }).catch((error) => console.log(error));
 
-    });
-  </script>
+})
+</script>
+
 
   <!-- on click on submit-->
   <script>
     $(document).on('click', '#btn', function (event) {
       //send to backend using request id //TODO
-      var reqIDString = $(this).parent().children().get(1).innerText
-      var reqID = Number(reqIDString)
-      //if response == 200 then next 2 lines //TODO
+      var _id = $(this).parent().children().get(0).firstChild.children.item(1).innerText;
+
+      axios.defaults.withCredentials = true;
+
+      axios.put(`${baseRoute}/acceptOrder`, { _id : _id}).then( async (response) => {
+        //based on responses success an error must be shown or the page must be redirected to dashbord
+        if (response.data.success) {
+          await location.reload()
+        }
+        let temp = document.getElementById('error5');
+        temp.style.display = "block";
+        temp.textContent = response.data.message;
+      })
+        .catch((error) => console.log(error));
+
       $(this).parent().hide()
-      alert('درخواست مورد نظر توسط شما قبول شد.')
+      // alert('درخواست مورد نظر انجام شد.')
     });
   </script>
+
 </body>
 
 </html>

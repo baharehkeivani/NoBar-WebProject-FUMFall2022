@@ -1534,7 +1534,7 @@ contact
   text-transform: none;
 }
 
-form#contact {
+form#contactUsForm {
   margin-left: -100px;
   position: relative;
   z-index: 2;
@@ -1547,7 +1547,7 @@ form#contact {
   border-radius: 20px;
 }
 
-form#contact input , form#contact textarea {
+form#contactUsForm input , form#contactUsForm textarea {
   width: 100%;
   height: 46px;
   border-radius: 0px;
@@ -1564,11 +1564,11 @@ form#contact input , form#contact textarea {
   margin-bottom: 35px;
 }
 
-form#contact input::placeholder {
+form#contactUsForm input::placeholder {
   color: #afafaf;
 }
 
-form#contact button {
+form#contactUsForm button {
   display: inline-block;
   background-color: #ff695f;
   font-size: 15px;
@@ -1583,7 +1583,7 @@ form#contact button {
   transition: all .3s;
 }
 
-form#contact button:hover {
+form#contactUsForm button:hover {
   background-color: #03a4ed;
 }
 /* 
@@ -1980,4 +1980,5 @@ responsive
 .success {
   color: green;
   display: none;
+  padding: 10px 0;
 }

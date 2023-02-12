@@ -139,7 +139,7 @@
       axios.defaults.withCredentials = true;
       // if(data.orderType == undefined) 
       //   console.log(data.orderType);
-      axios.post(`${baseRoute}/updateUser`, data).then((response) => {
+      axios.put(`${baseRoute}/updateUser`, data).then((response) => {
         //based on responses success an error must be shown or the page must be redirected to dashbord
         // console.log("res ",response);
         
