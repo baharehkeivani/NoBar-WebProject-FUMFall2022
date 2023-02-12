@@ -124,7 +124,7 @@
             <div class="mb-3">
               <label for="originFloorCount">تعداد طبقات مبدا</label>
               <div class="input-group">
-                <input type="number" min="0" class="form-control clearForm" id="originFloorCount" placeholder=""
+                <input type="number" min="0" class="form-control clearForm" id="originFloorCount" name="originFloorCount" placeholder=""
                   required="">
                 <div class="invalid-feedback" style="width: 100%;">لطفا تعداد طبقات مبدا را وارد کنید.</div>
               </div>
@@ -132,7 +132,7 @@
             <div class="mb-3">
               <label for="destinationFloorCount">تعداد طبقات مقصد</label>
               <div class="input-group">
-                <input type="number" min="0" class="form-control clearForm" id="destinationFloorCount" placeholder=""
+                <input type="number" min="0" class="form-control clearForm" id="destinationFloorCount"  name="destinationFloorCount" placeholder=""
                   required="">
                 <div class="invalid-feedback" style="width: 100%;">لطفا تعداد طبقات مقصد را وارد کنید.</div>
               </div>
@@ -338,11 +338,12 @@
     orderForm.addEventListener('submit', async event => {
       event.preventDefault();
 
-      const formData = new FormData(event.target);
+      const formData = new FormData(orderForm);
       data = {};
       for (const [key, value] of formData) {
         data[key] = value;
       }
+      
       console.log(data);
       axios.defaults.withCredentials = true;
       // axios.post(`${baseRoute}/addRequest`, data).then((response) => {
