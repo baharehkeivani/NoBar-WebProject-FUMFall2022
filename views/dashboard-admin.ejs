@@ -296,7 +296,6 @@
 
       //send to backend using request id //TODO
       var _id = $(this).parent().children().get(0).firstChild.children.item(3).innerText;
-      // console.log("id is ",$(this).parent().children().get(0).firstChild.children.item(3).innerText );
       axios.defaults.withCredentials = true;
       axios.put(`${baseRoute}/verifyDriver`, { _id: _id }).then(async (response) => {
         //based on responses success an error must be shown or the page must be redirected to dashbord
@@ -310,7 +309,6 @@
         .catch((error) => console.log(error));
 
       $(this).parent().hide()
-      alert('درخواست مورد نظر انجام شد.')
     });
   </script>
 
@@ -372,10 +370,9 @@
   <script>
     $(document).on('click', '#verifyUserbtn', function (event) {
       const baseRoute = "http://127.0.0.1:4000/v1";
-
       //send to backend using request id //TODO
-      var _id = $(this).parent().children().get(0).firstChild.children.item(3).innerText;
-
+      var _id = $(this).parent().children().get(1).innerText;
+      console.log("id is ", _id);
       axios.defaults.withCredentials = true;
       axios.put(`${baseRoute}/verifyUser`, { _id: _id }).then(async (response) => {
         //based on responses success an error must be shown or the page must be redirected to dashbord
